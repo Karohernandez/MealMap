@@ -43,6 +43,7 @@ class recipe extends food
             if(x.name == nameRemove)
             {
                 //delete x; //need to figure out how to delete objects from arrays and fix the holes
+                //swap chosen with last, pop, and resort?
             }
         }
     }
