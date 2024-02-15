@@ -46,4 +46,9 @@ class recipe extends food
             }
         }
     }
+
+    edit(choice)
+    {
+        // 1 = name, 2 = amount, 3 = amountType, 4 = mealType
+    }
 }
