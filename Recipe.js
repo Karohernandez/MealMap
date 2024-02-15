@@ -54,13 +54,13 @@ class recipe extends food
         switch(choice)
         {
             case 1:
-                this.name = prompt("What is the new name");
+                this.foods.name = prompt("What is the new name");
                 break;
             case 2:
-                this.amount = prompt("What is the new amount");
+                this.foods.amount = prompt("What is the new amount");
                 break;
             case 3:
-                this.amountType = prompt("What is the new amount type");
+                this.foods.amountType = prompt("What is the new amount type");
                 break;
             case 4:
                 this.mealType = prompt("what is the new meal type");
