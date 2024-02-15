@@ -50,5 +50,21 @@ class recipe extends food
     edit(choice)
     {
         // 1 = name, 2 = amount, 3 = amountType, 4 = mealType
+        switch(choice)
+        {
+            case 1:
+                this.name = prompt("What is the new name");
+                break;
+            case 2:
+                this.amount = prompt("What is the new amount");
+                break;
+            case 3:
+                this.amountType = prompt("What is the new amount type");
+                break;
+            case 4:
+                this.mealType = prompt("what is the new meal type");
+            default:
+                console.log("That is not a proper choice");
+        }
     }
 }
