@@ -1,5 +1,5 @@
 
-class food
+class Ingredient
 {
     //objects food, amount, amountType, mealType
     //functions new, add, edit, remove, replaceDiet (work on later)
@@ -11,20 +11,22 @@ class food
     }   
 }
 
-/*class foods extends food
+
+/*class IRecipe
 {
-    constructor()
-    {
-        this.foods = [];
-    }
+    displayIngredients();
 }*/
 
-class recipe extends food
+
+
+class Recipe 
 {
+    ingredients = [];
+    //later, add specific foods to recipe and ingredients, aka rolls in thanksgiving dinner
     constructor(mealType,name,amount,amountType)
     {
         this.mealType = mealType;
-        var foods = [new food(name,amount,amountType)];
+        this.ingredients.push(Ingredient(name,amount,amountType));
     }
 
     add()
@@ -32,13 +34,13 @@ class recipe extends food
         newName = prompt("What is the name of the food");
         newAmount = parseFloat(prompt("What is the new amount"));
         newType = prompt("What is the amount type");
-        this.foods.push(newName,newAmount,newType);
+        this.ingredients.push(newName,newAmount,newType);
     }
 
     remove()
     {
         nameRemove = prompt("What food do you want to remove?");
-        for(x of foods)
+        for(x of this.ingredients)
         {
             if(x.name == nameRemove)
             {
