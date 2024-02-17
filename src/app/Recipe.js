@@ -1,3 +1,4 @@
+import { pop } from "@jridgewell/set-array";
 import TextField from "@mui/material/TextField";
 import React from "react";
 
@@ -91,6 +92,12 @@ export default class Recipe
         {
             if(x.name == nameRemove)
             {
+                let end = this.ingredients.length;
+                end--;
+                let temp = this.ingredients[x];
+                this.ingredients[x] = this.ingredients[end];
+                this.ingredients[end] = temp;
+                pop(this.ingredients);
                 //delete x; //need to figure out how to delete objects from arrays and fix the holes
                 //swap chosen with last, pop, and resort?
             }
