@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from 'react';
-import Recipe from 'Recipe';
+import Recipe from './Recipe.js';
+
+
+//brackets call functions in here
 
 export default function Home() {
   return (
@@ -10,7 +13,10 @@ export default function Home() {
         <button>
       I don't do anything
     </button>
+        {Recipe.displayAll()} 
       </div>
     </main>
   );
 }
+
+
