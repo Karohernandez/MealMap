@@ -17,7 +17,24 @@ class Ingredient
         this.name = ingredientName;
         this.amount = amount;
         this.amountType = amountType;
-    }   
+    }
+    
+    getAmount()
+    {
+        return this.amount;
+    }
+
+    getAmountType()
+    {
+        return this.amountType;
+    }
+
+    getName()
+    {
+        return this.name;
+    }
+
+    
 }
 
 
@@ -40,6 +57,10 @@ export default class Recipe
 
     ingredients = [new Ingredient()];
 
+    getMealType()
+    {
+        return this.mealType;
+    }
     displayName()
     {
         console.log("Name of ingredient is " + this.ingredients[0].name);
