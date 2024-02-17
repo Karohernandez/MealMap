@@ -30,7 +30,15 @@ class Ingredient
 
 export default class Recipe
 {
-    ingredients = [];
+
+    //later, add specific foods to recipe and ingredients, aka rolls in thanksgiving dinner
+    constructor(mealType,ingredientName,amount,amountType)
+    {
+        this.mealType = mealType;
+        this.ingredients.push(new Ingredient(ingredientName,amount,amountType));
+    }
+
+    ingredients = [new Ingredient()];
 
     displayName()
     {
@@ -66,12 +74,7 @@ export default class Recipe
         }
     }
     
-    //later, add specific foods to recipe and ingredients, aka rolls in thanksgiving dinner
-    constructor(mealType,ingredientName,amount,amountType)
-    {
-        this.mealType = mealType;
-        this.ingredients.push(new Ingredient(ingredientName,amount,amountType));
-    }
+    
 
     add(newName,newAmount,newType)
     {
@@ -129,6 +132,74 @@ export default class Recipe
 
     
 }
+
+//down below is shopping list specific
+
+class SpecificIngredient
+{
+    Samount;
+    Sname;
+    constructor()
+    {
+        Samount = 0;
+        Sname = 'name';
+    }
+
+    setSamount(x)
+    {
+        this.setSamount = x;
+    }
+    setSname(x)
+    {
+        this.Sname = x;
+    }
+
+}
+
+class ShoppingList
+{
+    constructor()
+    {
+        //this.Recipe.push(new Recipe('type','ingredient',0,'weight')); 
+    }
+
+    Recipes = [new Recipe()];
+    SpecificIngs = [new SpecificIngredient()] //array of specfic ingredients for aggregation
+    similarIngredientAmounts = []; //aggregated amounts
+    pooledIngredientNames = []; // pooled together names
+
+    //pool to gether ingredients of the same type in an array 
+    ingredientsAggregate()
+    {
+        let numIndex = 0;
+        let typeIndex = 0;
+        for(x in Recipes)
+        {
+            let iType = x.Ingredient.name;
+            for(x in Recipes.ingredients)
+            {
+                this.push(SpecificIngs);
+                this.SpecificIngs[typeIndex].Sname = x.ingredients.name; 
+                if(x.ingredients.name = iType)
+                {
+                    this.SpecificIngs[typeIndex].Samount += x.ingredients.amount;
+                }
+            }
+            typeIndex++;
+        }
+    }
+
+    ingredientsToGet()
+    {
+        for (x in this.SpecificIngs)
+        {
+            console.log(x.Sname);
+            console.log(x.Samount);
+        }
+    }
+}
+
+//debugging variables and testing here
 
 if(debug == 1)
 {
