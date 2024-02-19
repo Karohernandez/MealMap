@@ -1,9 +1,14 @@
-import TextField from "@mui/material/TextField";
-import React from "react";
+const pop= "@jridgewell/set-array";
+const TextField = "@mui/material/TextField";
+const React = "react";
+const prompt = require("prompt-sync")();
 
-const { isNamedExportBindings } = require("typescript");
+// import { parse } from 'node-html-parser';
+//const parse = require('node-html-parser');
 
-let debug = 1; //for testing, 0 for not
+//const { isNamedExportBindings } = require("typescript");
+
+let debug = 2; //for testing, 0 for not
 
 
 
@@ -16,7 +21,24 @@ class Ingredient
         this.name = ingredientName;
         this.amount = amount;
         this.amountType = amountType;
-    }   
+    }
+    
+    getAmount()
+    {
+        return this.amount;
+    }
+
+    getAmountType()
+    {
+        return this.amountType;
+    }
+
+    getName()
+    {
+        return this.name;
+    }
+
+    
 }
 
 
@@ -26,11 +48,22 @@ class Ingredient
 }*/
 
 
-
-export default class Recipe
+class Recipe
 {
+
+    //later, add specific foods to recipe and ingredients, aka rolls in thanksgiving dinner
+    constructor(mealType,ingredientName,amount,amountType)
+    {
+        this.mealType = mealType;
+        this.ingredients.push(new Ingredient(ingredientName,amount,amountType));
+    }
+
     ingredients = [];
 
+    getMealType()
+    {
+        return this.mealType;
+    }
     displayName()
     {
         console.log("Name of ingredient is " + this.ingredients[0].name);
@@ -59,18 +92,14 @@ export default class Recipe
         console.log("Meal type is " + this.mealType);
         for(index = 0; index < this.ingredients.length; index++)
         {
+            console.log("New Ingredient");
             console.log("Name of ingredient is " + this.ingredients[index].name);
             console.log("Amount of ingredient is " + this.ingredients[index].amount);
             console.log("Amount type of ingredient is " + this.ingredients[index].amountType);
         }
     }
     
-    //later, add specific foods to recipe and ingredients, aka rolls in thanksgiving dinner
-    constructor(mealType,ingredientName,amount,amountType)
-    {
-        this.mealType = mealType;
-        this.ingredients.push(new Ingredient(ingredientName,amount,amountType));
-    }
+    
 
     add(newName,newAmount,newType)
     {
@@ -86,33 +115,45 @@ export default class Recipe
 
     remove()
     {
-        nameRemove = prompt("What food do you want to remove?");
-        for(x of this.ingredients)
+        
+        let nameRemove = prompt("What food do you want to remove? ");
+        let end = this.ingredients.length;
+        end--;
+        let index = 0;
+        for(let x of this.ingredients)
         {
+            
             if(x.name == nameRemove)
             {
+                
+                this.ingredients.splice(index,1);
                 //delete x; //need to figure out how to delete objects from arrays and fix the holes
                 //swap chosen with last, pop, and resort?
             }
+            index++;
         }
     }
 
-    edit(choice)
+    edit()
     {
-        // 1 = name, 2 = amount, 3 = amountType, 4 = mealType
+
+    console.log("1 = name, 2 = amount, 3 = amountType, 4 = mealType");
+    let choice = parseInt(prompt("pick which thing to edit "));
+    let listNum = parseInt(prompt("which thing in the list?"));
+    choice--;
         switch(choice)
         {
             case 1:
-                this.foods.name = prompt("What is the new name");
+                this.ingredients[listNum].name = prompt("What is the new name ");
                 break;
             case 2:
-                this.foods.amount = prompt("What is the new amount");
+                this.ingredients[listNum].amount = parseInt(prompt("What is the new amount "));
                 break;
             case 3:
-                this.foods.amountType = prompt("What is the new amount type");
+                this.ingredients[listNum].amountType = prompt("What is the new amount type ");
                 break;
             case 4:
-                this.mealType = prompt("what is the new meal type");
+                this.mealType = prompt("what is the new meal type ");
             default:
                 console.log("That is not a proper choice");
         }
@@ -123,11 +164,207 @@ export default class Recipe
     
 }
 
+//down below is shopping list specific
+
+class SpecificIngredient
+{
+    constructor(name,amount)
+    {
+        this.Samount = amount;
+        this.Sname = name;
+    }
+
+    setSamount(x)
+    {
+        this.Samount = x;
+    }
+    setSname(x)
+    {
+        this.Sname = x;
+    }
+
+    getSamount()
+    {
+        return this.Samount;
+    }
+
+    getSname()
+    {
+        return this.Sname;
+    }
+
+}
+
+class ShoppingList
+{
+    
+    /*constructor()
+    {
+        this.Recipe.push(new Recipe('type','ingredient',0,'weight')); 
+    }
+    constructor(mealType,ingredientName,amount,amountType)
+    {
+        this.Recipe.push(new Recipe(mealType,ingredientName,amount,amountType));
+    }*/
+    constructor(sRecipe)
+    {
+        this.Recipes.push(sRecipe);
+        this.SpecificIngs.push(new SpecificIngredient(this.Recipes[0].ingredients[0].name,this.Recipes[0].ingredients[0].amount));
+        //first object from recipe] //array of specfic ingredients for aggregation, array of class SpecificIngredients
+    }
+
+    addR(sRecipe)
+    {
+        this.Recipes.push(sRecipe);
+    }
+
+    Recipes = [];
+    SpecificIngs = []; 
+    //similarIngredientAmounts = []; //aggregated amounts
+    //pooledIngredientNames = []; // pooled together names
+
+    //pool to gether ingredients of the same type in an array 
+    ingredientsAggregate()
+    {
+        this.SpecificIngs.splice(0,1);
+        let numIndex = 0;
+        let typeIndex = 0;
+        let x;
+        let y;
+        let z;
+        
+        /*for(x in this.Recipes)
+        {
+            for(y in this.Recipes.ingredients)
+            {
+                typeIndex = 0;
+                for(z in this.SpecificIngs)
+                {
+                    
+                    //let iType = x.ingredients[typeIndex].name;
+                    if(y.ingredients.name == z.Sname)
+                    {
+                        z.Samount += x.ingredients.amount;
+                    }
+                    else
+                    {
+                        this.push.SpecificIngs(y.name,y.amount);
+                    }
+                }
+                
+            }
+            
+        }*/
+
+        /*this.Recipes.forEach(element => 
+            {
+            this.Recipes.ingredients.forEach(element2 => {
+                console.log("potential ingredient");
+            });
+        });*/
+
+        let singularIngs = [this.Recipes[0].ingredients[0].name];
+        for(let index1 = 0; index1 < this.Recipes.length;index1++)
+        {
+            for(let index2 = 0; index2 < this.Recipes[index1].ingredients.length; index2++)
+            {
+                console.log(this.Recipes[index1].ingredients[index2].name);
+                /*if(!(this.singularIngs.includes(this.Recipes[index1].ingredients[index2].name)))
+                {
+                    singularIngs.push(this.Recipes[index1].ingredients[index2].name);
+                }*/
+                let location = 0;
+                if(this.SpecificIngs.includes(this.Recipes[index1].ingredients[index2].name))
+                {
+                    location = this.SpecificIngs.indexOf(this.Recipes[index1].ingredients[index2]);
+                    this.SpecificIngs[location].Samount += this.Recipes[index1].ingredients[index2].amount;
+                }
+                else
+                {
+                    this.SpecificIngs.push(new SpecificIngredient(this.Recipes[index1].ingredients[index2].name,this.Recipes[index1].ingredients[index2].amount));
+                }
+                /*for(let index3 = 0; index3 < this.SpecificIngs.length;index3++)
+                {
+
+                    //let targetIndex = this.SpecificIngs[index3].indexOf(this.Recipes[index1].ingredients[index2].name);
+                    if(this.SpecificIngs[index3].has(this.Recipes[index1].ingredients[index2].name))
+                    {
+                        this.SpecificIngs[index3].Samount += this.Recipes[index1].ingredients[index2].amount;
+                    }   
+                    else
+                    {
+                        this.SpecificIngs.push(new SpecificIngredient(this.Recipes[index1].ingredients[index2].name,this.Recipes[index1].ingredients[index2].amount));
+
+                    }
+                    if(this.Recipes[index1].ingredients[index2].name == this.SpecificIngs[index3].Sname)
+                    {
+                        this.SpecificIngs[index3].Samount += this.Recipes[index1].ingredients[index2].amount;
+                        console.log(this.SpecificIngs[index3].Sname);
+                        console.log(this.SpecificIngs[index3].Samount);
+                    }
+                    else
+                    {
+                        this.SpecificIngs.push(new SpecificIngredient(this.Recipes[index1].ingredients[index2].name,this.Recipes[index1].ingredients[index2].amount));
+                        console.log(this.SpecificIngs[index3].Sname);
+                        console.log(this.SpecificIngs[index3].Samount);
+                    }
+                }*/
+            }
+        }
+        console.log("this is single ings " + singularIngs);
+
+        for(let index1 = 0; index1 < this.SpecificIngs.length; index1++)
+        {
+            for(let index2 = 0; index2 < this.SpecificIngs.length; index2++)
+            {
+                if((index1 != index2) && (this.SpecificIngs[index1].Sname == this.SpecificIngs[index2].Sname))
+                {
+                    this.SpecificIngs[index1].Samount += this.SpecificIngs[index2].Samount;
+                    this.SpecificIngs.splice(index2,1);
+                }
+            }
+        }
+    }
+
+    ingredientsToGet()
+    {
+        
+        this.SpecificIngs.forEach(element => {
+            console.log(element.Sname);
+            console.log(element.Samount);
+        });
+
+        /*for(let index = 0; index < this.SpecificIngs.length; index++)
+        {
+            console.log(this.SpecificIngs[index].Sname);
+            console.log(this.SpecificIngs[index].Samount);
+        }*/
+    }
+}
+
+//debugging variables and testing here
+
 if(debug == 1)
 {
     const Sandwich = new Recipe("dinner","Turkey", 2,"oz");
     Sandwich.add("bread",2,"lbs");
     Sandwich.add("lettuce",2,"lbs");
+    Sandwich.remove();
+    Sandwich.edit();
     Sandwich.displayAll();
+
+}
+
+if(debug == 2)
+{
+    const Sandwich = new Recipe("dinner","Turkey", 2,"oz");
+    Sandwich.add("bread",2,"lbs");
+    Sandwich.add("lettuce",2,"lbs");
+    const thisWeeksList = new ShoppingList(Sandwich);
+    const Sandwich2 = new Recipe("lunch","Ham",2,"oz");
+    Sandwich2.add("bread",3,"lbs");
+    thisWeeksList.addR(Sandwich2);
+    thisWeeksList.ingredientsAggregate();
+    thisWeeksList.ingredientsToGet();
 }
 
