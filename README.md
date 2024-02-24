@@ -1,3 +1,13 @@
+# Instal Dependencies
+install npm
+> npm install prompt-sync 
+
+## to run only backend
+
+> node ./src/app/Recipe.js
+
+---- Generic React info --------
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
