@@ -3,6 +3,7 @@ const TextField = "@mui/material/TextField";
 const React = "react";
 const prompt = require("prompt-sync")();
 const units = require("./Units.js");
+const Ingredients = require("./Ingredient.js")
 
 
 //SUPER IMPORTANT 
@@ -18,34 +19,7 @@ let debug = 2; //for testing, 0 for not
 
 
 
-class Ingredient
-{
-    //objects food, amount, amountType, mealType
-    //functions new, add, edit, remove, replaceDiet (work on later)
-    constructor(ingredientName, amount, amountType)
-    {
-        this.name = ingredientName;
-        this.amount = units.tbspFromTsp(amount);
-        this.amountType = amountType;
-    }
-    
-    getAmount()
-    {
-        return this.amount;
-    }
 
-    getAmountType()
-    {
-        return this.amountType;
-    }
-
-    getName()
-    {
-        return this.name;
-    }
-
-    
-}
 
 
 /*class IRecipe
@@ -61,7 +35,7 @@ class Recipe
     constructor(mealType,ingredientName,amount,amountType)
     {
         this.mealType = mealType;
-        this.ingredients.push(new Ingredient(ingredientName,amount,amountType));
+        this.ingredients.push(new Ingredients(ingredientName,amount,amountType));
     }
 
     ingredients = [];
@@ -109,7 +83,7 @@ class Recipe
 
     add(newName,newAmount,newType)
     {
-        this.ingredients.push(new Ingredient(newName,newAmount,newType));
+        this.ingredients.push(new Ingredients(newName,newAmount,newType));
     }
     addManual() //adding in attributes manually
     {
