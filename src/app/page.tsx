@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from 'react';
-import Recipe from './Recipe.js';
-
+//import Recipe from './Recipe.js';
+//const main = require("./Main.js");
+import {printD} from './ReactPageLink.js'
 
 //brackets call functions in here
 
@@ -13,7 +14,7 @@ export default function Home() {
         <button>
       I don't do anything
     </button>
-        {Recipe.displayAll()} 
+        {printD()}
       </div>
     </main>
   );

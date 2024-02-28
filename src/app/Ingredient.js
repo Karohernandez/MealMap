@@ -1,14 +1,15 @@
-const units = require("./Units.js");
+//const units = require("./Units.js");
 
 module.exports = class Ingredient
 {
-    //objects food, amount, amountType, mealType
+    //objects food, amount, units, mealType
     //functions new, add, edit, remove, replaceDiet (work on later)
-    constructor(ingredientName, amount, amountType)
+    constructor(ingredientName, amount, units)
     {
         this.name = ingredientName;
-        this.amount = units.tbspFromTsp(amount);
-        this.amountType = amountType;
+        //this.amount = units.tbspFromTsp(amount);
+        this.amount = amount;
+        this.units = units;
     }
     
     getAmount()
@@ -16,9 +17,9 @@ module.exports = class Ingredient
         return this.amount;
     }
 
-    getAmountType()
+    getUnits()
     {
-        return this.amountType;
+        return this.units;
     }
 
     getName()

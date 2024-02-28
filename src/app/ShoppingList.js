@@ -58,7 +58,7 @@ module.exports = class ShoppingList
                 }
                 else
                 {
-                    this.SpecificIngs.push(new SpecificIngredient(this.Recipes[index1].ingredients[index2].name,this.Recipes[index1].ingredients[index2].amount));
+                    this.SpecificIngs.push(new SpecificIngredient(this.Recipes[index1].ingredients[index2].name,this.Recipes[index1].ingredients[index2].amount, this.Recipes[index1].ingredients[index2].units));
                 }
             }
         }
@@ -81,7 +81,7 @@ module.exports = class ShoppingList
     {
         
         this.SpecificIngs.forEach(element => {
-            console.log(element.Sname, " = ", element.Samount);
+            console.log(element.Sname, " = ", element.Samount, " and type is ", element.Sunits);
             //console.log(element.Samount);
         });
     }
@@ -89,10 +89,11 @@ module.exports = class ShoppingList
 
 class SpecificIngredient
 {
-    constructor(name,amount)
+    constructor(name,amount, units)
     {
         this.Samount = amount;
         this.Sname = name;
+        this.Sunits = units;
     }
 
     setSamount(x)
@@ -103,6 +104,10 @@ class SpecificIngredient
     {
         this.Sname = x;
     }
+    setSunits(x)
+    {
+        this.Sunits = x;
+    }
 
     getSamount()
     {
@@ -112,6 +117,11 @@ class SpecificIngredient
     getSname()
     {
         return this.Sname;
+    }
+
+    getSunits()
+    {
+        return this.Sunits;
     }
 
 }

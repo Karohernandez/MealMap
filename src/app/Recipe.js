@@ -15,17 +15,17 @@ const Ingredients = require("./Ingredient.js");
 
 //const { isNamedExportBindings } = require("typescript");
 
-let debug = 2; //for testing, 0 for not
+let debug = 1; //for testing, 0 for not
 
 
 module.exports = class Recipe
 {
 
     //later, add specific foods to recipe and ingredients, aka rolls in thanksgiving dinner
-    constructor(mealType,ingredientName,amount,amountType)
+    constructor(mealType,ingredientName,amount,units)
     {
         this.mealType = mealType;
-        this.ingredients.push(new Ingredients(ingredientName,amount,amountType));
+        this.ingredients.push(new Ingredients(ingredientName,amount,units));
     }
 
     ingredients = [];
@@ -44,9 +44,9 @@ module.exports = class Recipe
         console.log("Amount of ingredient is " + this.ingredients[0].amount);
     }
 
-    displayAmountType()
+    displayUnits()
     {
-        console.log("Amount type of ingredient is " + this.ingredients[0].amountType);
+        console.log("Amount type of ingredient is " + this.ingredients[0].units);
     }
 
     displayMealType()
@@ -65,7 +65,7 @@ module.exports = class Recipe
             console.log("New Ingredient");
             console.log("Name of ingredient is " + this.ingredients[index].name);
             console.log("Amount of ingredient is " + this.ingredients[index].amount);
-            console.log("Amount type of ingredient is " + this.ingredients[index].amountType);
+            console.log("Amount type of ingredient is " + this.ingredients[index].units);
         }
     }
     
@@ -106,7 +106,7 @@ module.exports = class Recipe
     edit()
     {
 
-    console.log("1 = name, 2 = amount, 3 = amountType, 4 = mealType");
+    console.log("1 = name, 2 = amount, 3 = units, 4 = mealType");
     let choice = parseInt(prompt("pick which thing to edit "));
     let listNum = parseInt(prompt("which thing in the list?"));
     choice--;
@@ -119,7 +119,7 @@ module.exports = class Recipe
                 this.ingredients[listNum].amount = parseInt(prompt("What is the new amount "));
                 break;
             case 3:
-                this.ingredients[listNum].amountType = prompt("What is the new amount type ");
+                this.ingredients[listNum].units = prompt("What is the new amount type ");
                 break;
             case 4:
                 this.mealType = prompt("what is the new meal type ");
