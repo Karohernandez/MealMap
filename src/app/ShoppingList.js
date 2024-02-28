@@ -43,6 +43,7 @@ module.exports = class ShoppingList
         let z;
         
 
+        //creates the list of specific ingredients with repeaters
         let singularIngs = [this.Recipes[0].ingredients[0].name];
         for(let index1 = 0; index1 < this.Recipes.length;index1++)
         {
@@ -64,6 +65,8 @@ module.exports = class ShoppingList
         }
         console.log("this is single ings " + singularIngs);
 
+
+        //aggregates the specific list, adding repeating values and splicing away the leftovers
         for(let index1 = 0; index1 < this.SpecificIngs.length; index1++)
         {
             for(let index2 = 0; index2 < this.SpecificIngs.length; index2++)
