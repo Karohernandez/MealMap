@@ -73,8 +73,17 @@ module.exports = class ShoppingList
             {
                 if((index1 != index2) && (this.SpecificIngs[index1].Sname == this.SpecificIngs[index2].Sname))
                 {
-                    this.SpecificIngs[index1].Samount += this.SpecificIngs[index2].Samount;
-                    this.SpecificIngs.splice(index2,1);
+                    if(this.SpecificIngs[index1].Sunits == this.SpecificIngs[index2].Sunits)
+                    {
+                        this.SpecificIngs[index1].Samount += this.SpecificIngs[index2].Samount;
+                        this.SpecificIngs.splice(index2,1);
+                    }
+                    else
+                    {
+                        this.SpecificIngs[index2].Samount = units.unitConversionCompare(this.SpecificIngs[index1].Sunits, this.SpecificIngs[index2].Sunits, this.SpecificIngs[index2].Samount);
+                        this.SpecificIngs[index1].Samount += this.SpecificIngs[index2].Samount;
+                        this.SpecificIngs.splice(index2,1);
+                    }
                 }
             }
         }
