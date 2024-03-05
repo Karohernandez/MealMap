@@ -16,10 +16,7 @@ module.exports = class diets
 {
     constructor()
     {
-        const meats = new Set(["pork","beef","chicken","turkey","duck","goat","mutton","bison","kangaroo","buffalo","rabbit","frog","snake","alligator","crocodile","guinea pig"]);
-        const fishes = new Set(["salmon","cod","tilapia"]);
-        const dairy = new Set(["milk", "cheese","butter"]);
-        const crustaceans = new Set(["crab","lobster","shrimp","oyster"]);
+        
     }
 
     searchDiet(dietType, ingredient)
