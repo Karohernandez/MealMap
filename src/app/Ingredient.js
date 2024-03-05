@@ -7,7 +7,8 @@ module.exports = class Ingredient
     constructor(ingredientName, amount, units)
     {
         this.name = ingredientName;
-        this.name = this.name.trim();
+        this.name = this.name.trimStart();
+        this.name = this.name.trimEnd();
         this.name = this.name.toLowerCase();
         //this.amount = units.tbspFromTsp(amount);
         this.amount = amount;

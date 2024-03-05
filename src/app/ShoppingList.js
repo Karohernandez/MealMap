@@ -1,6 +1,7 @@
 const Ingredients = require("./Ingredient.js")
 const units = require("./Units.js");
 const Recipe = require("./Recipe.js");
+const DietR = require("./DietaryReplacement.js");
 
 
 
@@ -89,12 +90,24 @@ module.exports = class ShoppingList
         }
     }
 
+    dietChange(dietType) //needs to call after aggregate
+    {
+        const dietR = new DietR();
+        for(let index = 0; index < this.SpecificIngs.length; index++)
+        {
+            if(dietR.searchDiet(dietType, this.SpecificIngs[index].Sname))
+            {
+                console.log(this.SpecificIngs[index].Sname, " was removed");
+                this.SpecificIngs.splice(index,1);
+            }
+        }
+    }
+
     ingredientsToGet()
     {
         
         this.SpecificIngs.forEach(element => {
             console.log(element.Sname, " = ", element.Samount, " and type is ", element.Sunits);
-            //console.log(element.Samount);
         });
     }
 }
