@@ -1,0 +1,111 @@
+
+
+.recipe-mealmap-container {
+  display: flex;
+  height: 115vh;
+  flex-direction: column;
+}
+
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #040404; 
+  padding: 30px 20px;
+  width: 97.5%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  border-bottom: 2px solid #ccc; 
+}
+
+.recipe-username {
+  font-size: 18px; 
+  margin-right: 100px;
+}
+
+
+.tab-recipe {
+  display: flex;
+  margin-bottom: 10px;
+  background-color: #CEE5E1;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 55px;
+  border-radius: 15px;
+  height: 37px;
+}
+
+.tab-info-title {
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 22px;
+}
+
+
+.recipe-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.recipe-main-content {
+  margin-top: 10px;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  transition: margin-left 0.3s ease;
+}
+
+.single-recipe-name {
+  margin-left: 70px;
+  font-size: 26px;
+}
+
+.recipe-ingredients-title {
+  margin-top: 15px;
+  font-size: 22px;
+  margin-left: 70px;
+}
+
+.ingredients-title {
+  color: #6c6969;
+}
+
+
+.ingredients-list {
+  list-style-type: none; 
+  padding-left: 0; 
+  margin-left: 70px;
+  font-size: 17px;
+}
+
+.ingredients-list li {
+  margin-left: 0; 
+  margin-top: 15px;
+}
+
+.ingredient {
+  margin-left: 20px;
+}
+
+.add-ingredients{
+  margin-top: 60px;
+  margin-left: 70px;
+  
+}
+
+.add-ingredients-button {
+  padding: 15px 10px;
+  width: 220px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #CEE5E1;
+  font-size: 15px;
+  font-weight: 30px;
+  font-weight: 300;
+}
+
+.add-ingredients-button.active {
+  color: #69abc1;
+  background-color: #040404;
+}

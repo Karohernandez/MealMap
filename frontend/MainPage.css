@@ -1,0 +1,157 @@
+
+.mealmap-container {
+  display: flex;
+  height: 115vh;
+  flex-direction: column; 
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #040404; 
+  padding: 30px 20px;
+  width: 97.5%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  border-bottom: 2px solid #ccc; 
+}
+
+.header-title {
+  font-size: 24px; 
+  margin-left: 70px;
+  font-weight: 500;
+}
+
+.header-username {
+  font-size: 18px; 
+  margin-right: 100px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row; 
+}
+
+.main-content {
+  margin-top: 60px;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  transition: margin-left 0.3s ease;
+}
+
+.all-recipes-title{
+  font-size: 27px;
+  margin-left: 70px;
+}
+.main-content.with-sidebar {
+  margin-left: 250px; 
+  filter: blur(5px); 
+  pointer-events: none; 
+  user-select: none; 
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  background-color: #CEE5E1;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 30px;
+  border-radius: 15px;
+  height: 60px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #CEE5E1;
+  font-size: 15px;
+  font-weight: 55px;
+
+}
+
+.tab.active {
+    color: #69abc1;
+}
+
+.instruction-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.view-recipe-title {
+  margin-left: 73px;
+  margin-top: 20px;
+  font-size: 19px;
+}
+
+.small-card {
+  display: flex;
+  margin-right: 73px;
+  margin-top: 19px;
+}
+
+.single-check-box{
+  width: 20px;
+  height: 20px;
+  background-color: #e7e1e1;
+  margin-top: 0px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.recipe-cards {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 70px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 70px;
+}
+
+.card {
+  border: 1px solid #CEE5E1;
+  border-width: 3px;
+  padding: 20px;
+  position: relative;
+  border-radius: 15px;
+  height: 150px;
+ 
+  background-color: #CEE5E1;
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1), 0 5px 19px 0 rgba(0, 0, 0, 0.1);
+ 
+}
+
+.checkmark {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.recipe-name {
+  margin-left: 50px;
+  font-size: 15px; 
+  color: #3498db; 
+}
+
+.recipe-name:hover {
+  color: #2c3e50; 
+}
+
+.recipe-image-placeholder {
+  width: 20px;
+  height: 20px;
+  background-color: #e7e1e1;
+  margin-top: 0px;
+  border-radius: 5px;
+}
+
+
+
+
+
+

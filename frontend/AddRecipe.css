@@ -1,0 +1,187 @@
+html,body { 
+  overflow-y: scroll; }
+
+.addrecipe-mealmap-container {
+  display: flex;
+  min-height: 100vh; 
+  flex-direction: column;
+}
+
+.addrecipe-app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  color: #040404; /* White text */
+  padding: 30px 20px;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Optional: Adds slight shadow under the nav bar */
+  border-bottom: 2px solid #ccc; /* Adds a bottom border */
+}
+
+
+.header-title {
+  font-size: 24px; /* Large text for the title */
+  margin-left: 70px;
+}
+
+.header-username {
+  font-size: 18px; /* Slightly smaller text for the username */
+  margin-right: 100px;
+}
+
+.addrecipe-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row; /* Adjust this based on your sidebar design, e.g., column for a vertical layout */
+}
+
+.addrecipe-main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.addrecipe-main-content.with-sidebar {
+  margin-left: 250px; /* Adjust if you want the content to move with the sidebar */
+  filter: blur(5px); /* Adjust the blur value as needed */
+  pointer-events: none; /* Optional: Prevent interaction with the content while blurred */
+  user-select: none; 
+}
+
+
+.username {
+    font-size: 15px;
+}
+
+.addrecipe-tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  background-color: #CEE5E1;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 30px;
+  border-radius: 15px;
+  padding-top: 40px;
+  height: 60px;
+  text-align: center;
+  font-size: large;
+}
+
+.tab.active {
+    color: #69abc1;
+}
+
+.meal-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 30px;
+  border-radius: 15px;
+  height: 50px;
+}
+
+.meal-button {
+  padding: 15px 10px;
+  width: 100px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #CEE5E1;
+  font-size: 15px;
+  font-weight: 30px;
+  
+}
+
+.meal-button.active {
+    color: #69abc1;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  margin-left: 8px;
+}
+
+#recipe-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  margin-right: 20px;
+}
+
+.input-container {
+  margin: 20px;
+  margin-left: 70px;
+  text-align: left;
+  padding: 10px;
+}
+
+input[type="text"] {
+  width: 30%; /* Full width */
+  padding: 8px 15px; /* Some padding */
+  padding-left: 10px;
+  margin-top: 15px;
+  display: inline-block; /* Making the input inline-block */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 10px; /* Rounded borders */
+  box-sizing: border-box; /* Making sure padding does not affect width */
+}
+
+input[type="text"]:focus {
+  outline: none; /* Removes the outline */
+  border-color: #345e61; /* Green border on focus */
+}
+
+label[for="text-input"] {
+  display: block;
+}
+
+label[for="text-input-ingredient"] {
+  display: inline-block;
+}
+
+input[type="text-ingredient"] {
+  width: 15%; /* Full width */
+  padding: 8px 15px; /* Some padding */
+  padding-left: 10px;
+  margin-top: 15px;
+  margin-right: 10px;
+  display: inline-block; /* Making the input inline-block */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 10px; /* Rounded borders */
+  box-sizing: border-box; /* Making sure padding does not affect width */
+}
+
+.add-ingredient-button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #9bb3af;
+  font-size: 15px;
+  font-weight: 55px;
+  margin-left: 40px;
+}
+
+.submit-recipe {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #CEE5E1;
+  font-size: 15px;
+  font-weight: 55px;
+}
+
+
+
+
