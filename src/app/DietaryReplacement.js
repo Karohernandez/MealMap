@@ -69,7 +69,7 @@ module.exports = class diets
     addDiet()
     {
         //console.log("enter in a new datatype : ");
-        newName = prompt("What is the name of the diet : "); //create a new set
+        newName = prompt("What is the name of the diet : "); //create a new set // can't access before initilization
         console.log("enter in ingredients, quit to exit\n"); 
         const newName = new Set();
         //loop through taking names, exit on quit
