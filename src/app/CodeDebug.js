@@ -1,7 +1,7 @@
 const Recipe = require("./Recipe.js");
 const ShoppingList = require("./ShoppingList.js");
 
-let debug = 3;
+let debug = 4;
 
 if (debug == 1) {
     const Sandwich = new Recipe("dinner", "Turkey", 2, "oz");
@@ -38,5 +38,17 @@ if(debug == 3)
     
     thisWeeksList.ingredientsAggregate();
     thisWeeksList.dietChange("vegetarian");
+    thisWeeksList.ingredientsToGet();
+}
+
+if(debug == 4)
+{
+    const Sandwich = new Recipe("dinner", "Turkey", 2, "oz");
+    Sandwich.add("bread",2,"lbs");
+    Sandwich.add("lettuce",2,"lbs");
+    const thisWeeksList = new ShoppingList(Sandwich);
+    
+    thisWeeksList.ingredientsAggregate();
+    thisWeeksList.dietChangePersonal();
     thisWeeksList.ingredientsToGet();
 }

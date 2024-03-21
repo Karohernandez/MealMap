@@ -1,5 +1,6 @@
 const Slist = require("./ShoppingList.js");
 const recipe = require("./Recipe.js");
+const prompt = require("prompt-sync")();
 //set for replacing dietary needs
 
 //Vegetarian
@@ -62,6 +63,33 @@ module.exports = class diets
         else if(dietType == "nut")
         {
             
+        }
+    }
+
+    addDiet()
+    {
+        //console.log("enter in a new datatype : ");
+        newName = prompt("What is the name of the diet : "); //create a new set
+        console.log("enter in ingredients, quit to exit\n"); 
+        const newName = new Set();
+        //loop through taking names, exit on quit
+        while(true)
+        {
+            newIngredient = prompt("");
+            if(newIngredient == "quit")
+            {
+                break;
+            }
+            newName.add(newIngredient);
+        }
+        return newName; // return set
+    }
+
+    searchCustomDiet(cDiet, ingredient)
+    {
+        if(cDiet.has(ingredient))
+        {
+            return true;
         }
     }
 

@@ -103,6 +103,20 @@ module.exports = class ShoppingList
         }
     }
 
+    dietChangePersonal()
+    {
+        const dietR = new DietR();
+        const newDiet = dietR.addDiet();
+        for(let index = 0; index < this.SpecificIngs.length; index++)
+        {
+            if(dietR.searchCustomDiet(newDiet, this.SpecificIngs[index].Sname))
+            {
+                console.log(this.SpecificIngs[index].Sname, " was removed");
+                this.SpecificIngs.splice(index,1);
+            }
+        }
+    }
+
     ingredientsToGet()
     {
         
