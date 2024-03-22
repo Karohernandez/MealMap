@@ -6,6 +6,13 @@ install npm
 
 > node ./src/app/Recipe.js
 
+# install static checker
+> npm init @eslint/config
+
+# install static checker v2
+> npm install -g jshint
+> npm install --save-dev jshint
+
 ---- Generic React info --------
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
