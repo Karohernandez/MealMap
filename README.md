@@ -13,6 +13,9 @@ install npm
 > npm install -g jshint
 > npm install --save-dev jshint
 
+# run jshint
+> jshint src/app/file.js
+
 ---- Generic React info --------
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
