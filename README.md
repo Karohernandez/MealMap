@@ -16,6 +16,11 @@ install npm
 # run jshint
 > jshint src/app/file.js
 
+## fix jshint const warnings
+add .jshintrc 
+
+inside, add {"esversion" : 6}
+
 ---- Generic React info --------
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
