@@ -69,20 +69,22 @@ module.exports = class diets
     addDiet()
     {
         //console.log("enter in a new datatype : ");
-        newName = prompt("What is the name of the diet : "); //create a new set // can't access before initilization
+        const newName = prompt("What is the name of the diet : "); //create a new set // can't access before initilization
         console.log("enter in ingredients, quit to exit\n"); 
-        const newName = new Set();
+        //const newSet = eval(newName);
+        const newSet = new Set();
+        //console.log("type in quit to exit\n");
         //loop through taking names, exit on quit
         while(true)
         {
-            newIngredient = prompt("");
+            const newIngredient = prompt("");
             if(newIngredient == "quit")
             {
                 break;
             }
-            newName.add(newIngredient);
+            newSet.add(newIngredient);
         }
-        return newName; // return set
+        return newSet; // return set
     }
 
     searchCustomDiet(cDiet, ingredient)

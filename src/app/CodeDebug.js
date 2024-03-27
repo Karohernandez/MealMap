@@ -1,7 +1,7 @@
 const Recipe = require("./Recipe.js");
 const ShoppingList = require("./ShoppingList.js");
 
-let debug = 1;
+let debug = 4;
 
 if (debug == 1) {
     const Sandwich = new Recipe("dinner", "Turkey", 2, "oz");

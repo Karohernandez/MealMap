@@ -123,6 +123,7 @@ module.exports = class Recipe
                 break;
             case 4:
                 this.mealType = prompt("what is the new meal type ");
+                break;
             default:
                 console.log("That is not a proper choice");
         }
