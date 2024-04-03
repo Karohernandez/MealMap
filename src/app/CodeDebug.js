@@ -49,6 +49,9 @@ if(debug == 4)
     const thisWeeksList = new ShoppingList(Sandwich);
     
     thisWeeksList.ingredientsAggregate();
-    thisWeeksList.dietChangePersonal();
+    var newDiets = thisWeeksList.dietAddPersonal();
+    thisWeeksList.dietRemove(newDiets);
+    thisWeeksList.listRemove(newDiets);
+    
     thisWeeksList.ingredientsToGet();
 }
