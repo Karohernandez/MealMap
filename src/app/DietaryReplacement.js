@@ -72,12 +72,14 @@ module.exports = class diets
         const newName = prompt("What is the name of the diet : "); //create a new set // can't access before initilization
         console.log("enter in ingredients, quit to exit\n"); 
         //const newSet = eval(newName);
-        const newSet = new Set();
+        const newSet = new Set(); //put in name of diet in first place of set
+        newSet.add(newName);
         //console.log("type in quit to exit\n");
         //loop through taking names, exit on quit
         while(true)
         {
-            const newIngredient = prompt("");
+            var newIngredient = prompt("");
+            newIngredient = newIngredient.toLowerCase();
             if(newIngredient == "quit")
             {
                 break;
@@ -93,6 +95,11 @@ module.exports = class diets
         {
             return true;
         }
+    }
+
+    printCustomDiet(cDiet)
+    {
+        console.log(cDiet);
     }
 
 

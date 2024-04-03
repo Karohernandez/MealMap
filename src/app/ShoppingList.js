@@ -2,6 +2,7 @@ const Ingredients = require("./Ingredient.js")
 const units = require("./Units.js");
 const Recipe = require("./Recipe.js");
 const DietR = require("./DietaryReplacement.js");
+const prompt = require("prompt-sync")();
 
 
 
@@ -106,15 +107,36 @@ module.exports = class ShoppingList
     dietChangePersonal()
     {
         const dietR = new DietR();
-        const newDiet = dietR.addDiet();
-        for(let index = 0; index < this.SpecificIngs.length; index++)
+        const newDiet = [];
+        var count = 0;
+
+        while(true)
         {
-            if(dietR.searchCustomDiet(newDiet, this.SpecificIngs[index].Sname))
+            console.log("entering a diet: ");
+            newDiet[count] = dietR.addDiet();
+            count++;
+            console.log("type quit to leave, anything else to enter in another diet.")
+            var input = prompt("choice : ");
+            input = input.toLowerCase();
+            if(input == "quit")
             {
-                console.log(this.SpecificIngs[index].Sname, " was removed");
-                this.SpecificIngs.splice(index,1);
+                break;
             }
         }
+        dietR.printCustomDiet(newDiet[0]);
+
+        for(let dietIndex = 0; dietIndex < newDiet.length; dietIndex++)
+        {
+            for(let index = 0; index < this.SpecificIngs.length; index++)
+            {
+                if(dietR.searchCustomDiet(newDiet[dietIndex], this.SpecificIngs[index].Sname))
+                {
+                    console.log(this.SpecificIngs[index].Sname, " was removed");
+                    this.SpecificIngs.splice(index,1);
+                }
+            }
+        }
+
     }
 
     ingredientsToGet()
@@ -124,6 +146,8 @@ module.exports = class ShoppingList
             console.log(element.Sname, " = ", element.Samount, " and type is ", element.Sunits);
         });
     }
+
+
 }
 
 class SpecificIngredient
