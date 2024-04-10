@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+html,body { 
+  overflow-y: scroll; 
+}
+
+.addrecipe-mealmap-container {
+  display: flex;
+  min-height: 100vh; 
+  flex-direction: column;
+  background-color: #c9c8c6;
+}
+
+.addrecipe-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row; 
+}
+
+.addrecipe-main-content {
+  flex-grow: 1;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.addrecipe-main-content.with-sidebar {
+  margin-left: 250px; 
+  filter: blur(5px); 
+  pointer-events: none; 
+  user-select: none; 
+}
+
+.addrecipe-tabs {
+  margin-bottom: 20px;
+  text-align: center;
+  background-color: #bbbbbb;
+  margin-left: 90px;
+  margin-right: 90px;
+  margin-top: 55px;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 60px;
+}
+
+.enter-title {
+  font-family: 'Playfair Display', serif;
+  margin-top: 4px;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+#recipe-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container label {
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.input-container {
+  margin: 20px;
+  margin-left: 70px;
+  text-align: left;
+  padding: 10px;
+}
+
+input[type="text"] {
+  width: 30%; 
+  padding: 8px 15px; 
+  padding-left: 10px;
+  margin-top: 15px;
+  border: 1px solid #d2e9f8; 
+  border-radius: 10px; 
+  box-sizing: border-box; 
+}
+
+input[type="text"]:focus {
+  outline: none; 
+  border-color: #d2e9f8;
+}
+
+input[type="text-ingredient"] {
+  width: 15%; 
+  padding: 8px 15px;
+  padding-left: 10px;
+  margin-top: 15px;
+  margin-right: 10px;
+  display: inline-block; 
+  border: 1px solid #ccc; 
+  border-radius: 10px;
+  box-sizing: border-box; 
+}
+
+.add-single-ingredient-button {
+  font-family: 'Lato', sans-serif;
+  padding: 10px 10px;
+  width: 160px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #496a62;
+  font-weight: 30px;
+  font-size: 17px;
+  color: white;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.add-single-ingredient-button:hover {
+  color: #babac8;
+}
+
+.add-single-ingredient-button:active {
+  color: #284650;
+  box-shadow: 1px 0 1px rgba(0,0,0.5,0.5);
+}
+
+
+.add-single-restriction-button {
+  font-family: 'Lato', sans-serif;
+  padding: 10px 10px;
+  width: 160px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #496a62;
+  font-weight: 30px;
+  font-size: 17px;
+  color: white;
+  margin-left: 25px;
+}
+
+.add-single-restriction-button:hover {
+  color: #babac8;
+}
+
+.add-single-restriction-button:active {
+  color: #284650;
+  box-shadow: 1px 0 1px rgba(0,0,0.5,0.5);
+}
+
+.meal-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 60px;
+  border-radius: 15px;
+  height: 50px;
+}
+
+.meal-button {
+  font-family: 'Lato', sans-serif;
+  padding: 10px 10px;
+  width: 150px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #496a62;
+  font-weight: 30px;
+  font-size: 17px;
+  margin-left: 40px;
+  margin-right: 40px;
+  color: white;
+}
+
+.meal-button:hover {
+  color: #babac8;
+}
+
+.meal-button:active {
+  color: #284650;
+  box-shadow: 1px 0 1px rgba(0,0,0.5,0.5);
+}
+
+.submit-button {
+  display: flex;
+  margin-left: 70px;
+  margin-top: 40px;
+  border-radius: 15px;
+  height: 50px;
+}
+
+.submit-recipe {
+  font-family: 'Lato', sans-serif;
+  padding: 10px 10px;
+  width: 150px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #496a62;
+  font-weight: 30px;
+  font-size: 17px;
+  margin-left: 30px;
+  color: white;
+}
+
+.submit-recipe:hover {
+  color: #babac8;
+}
+
+.submit-recipe:active {
+  color: #284650;
+  box-shadow: 1px 0 1px rgba(0,0,0.5,0.5);
+}
+
+#food-restrictions {
+  width: 150px;
+}
+
+

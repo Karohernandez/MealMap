@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+
+.mealmap-container {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  overflow: auto;
+  flex-direction: column; 
+  background-color: #dfdddd;
+}
+
+.content {
+  display: flex;
+  flex-direction: row; 
+}
+
+.main-content {
+  margin-top: 37px;
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.all-recipes-title{
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+}
+
+.main-content.with-sidebar {
+  filter: blur(5px); 
+  pointer-events: none; 
+  user-select: none; 
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 40px;
+  margin-bottom: 53px;
+  border-radius: 25px;
+  height: 75px;
+  padding-top: 5px;
+  border-width: 1.5px;
+  border-color: #656565;
+}
+
+.tab {
+  font-family: 'Lato', sans-serif;
+  border: none;
+  cursor: pointer;
+  background-color: #dfdddd;
+  font-size: 19px;
+  font-weight: 55px;
+  color: rgb(0, 0, 0);
+  width: 120px;
+  height: 62px;
+
+}
+
+.tab.active {
+  border-radius: 20px;
+  box-shadow: 0 3px 7px 0 rgba(43, 43, 43, 0.1), 0 5px 10px 0 rgba(43, 43, 43, 0.1);
+  color: #496a62;
+}
+
+.instruction-text {
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.view-recipe-title {
+  margin-left: 80px;
+  margin-top: 20px;
+  font-size: 20px;
+
+}
+
+.small-card {
+  display: flex;
+  margin-right: 73px;
+  margin-top: 19px;
+}
+
+.single-check-box{
+  width: 20px;
+  height: 20px;
+  background-color: #d2cccc;
+  margin-top: 0px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.recipe-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 70px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 40px;
+  position: relative;
+  border-radius: 5px;
+  height: 200px;
+  width: 300px;
+  background-color: #5b7d6cb2;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+ 
+}
+
+.recipe-icon-image {
+  flex-grow: 1;
+}
+
+.bottom-label {
+  border-top: 2px solid #344a45;
+  padding-top: 15px;
+  height: 60px;
+  background-color: #c4c7c63f;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+
+.delete-recipe {
+  background-size: contain;
+  background-image: url(./images/trash.png);
+  position: absolute; /* Or 'absolute' */
+  top: 145px;
+  left: 250px;
+  z-index: 1000; 
+  width: 20px; 
+  height: 20px; 
+  border: 2px;
+  margin-top: 13px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.delete-tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120px/2 = 60px) to center the tooltip */
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.delete-tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.delete-tooltiptext:hover  {
+  visibility: visible;
+  opacity: 1;
+}
+
+.recipe-name {
+  font-family: 'Lato', sans-serif;
+  margin-left: 40px;
+  font-size: 19px; 
+  color: #101111; 
+}
+
+.recipe-name:hover {
+  color: #2c3e50; 
+}
+
+
+.add-recipe-to-list{
+ margin-top: 15px;
+ margin-right: 90px;
+ font-family: 'Lato', sans-serif;
+ font-weight: 500;
+}
+
+.recipe-grocery-button:active {
+  color: #000000;
+  box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.5);
+}
+
+input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+  margin-left: 25px;
+ 
+}
+
+
+
+
+
+
+
+

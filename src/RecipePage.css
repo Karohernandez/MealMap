@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --transparency: 0.3;
+}
+.recipe-mealmap-container {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  overflow: auto;
+  flex-direction: column;
+  background-color: #d6d6d6;
+}
+
+.tab-recipe {
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: #bbbbbb;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 70px;
+  margin-right: 70px;
+  margin-top: 55px;
+  border-radius: 20px;
+  height: 60px;
+}
+
+.tab-info-title {
+  font-family: 'Playfair Display', serif;
+  margin-top: 4px;
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.recipe-content {
+  font-family: 'Lato', sans-serif;
+}
+
+.recipe-main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  margin-left: 60px;
+  margin-right: 60px;
+  transition: margin-left 0.3s ease;
+}
+
+.ingredients {
+  margin-right: 70px;
+  background-color: #a09f9f42;
+  border-radius: 20px;
+  width: 500px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+.single-recipe-name {
+  margin-left: 70px;
+  font-size: 26px;
+}
+
+.recipe-ingredients-title {
+  margin-top: 15px;
+  font-size: 22px;
+  margin-left: 70px;
+}
+
+.ingredients-title {
+  color: #6c6969;
+}
+
+.ingredients-list {
+  list-style-type: none; 
+  margin-top: 25px;
+  padding-left: 0; 
+  margin-left: 45px;
+  font-size: 17px;
+}
+
+.ingredients-list li {
+  margin-left: 0; 
+  margin-top: 15px;
+}
+
+.ingredient {
+  margin-left: 20px;
+}
+
+.alternatives {
+  margin-left: 70px;
+  border-radius: 20px;
+  background-color: #a09f9f42;
+  width: 500px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+.single-alternative-name {
+  margin-left: 70px;
+  font-size: 26px;
+}
+
+.recipe-alternatives-title {
+  margin-top: 15px;
+  font-size: 22px;
+  margin-left: 70px;
+}
+
+.alternative-title {
+  color: #6c6969;
+}
+
+.replacements-list {
+  list-style-type: none; 
+  margin-top: 25px;
+  padding-left: 0; 
+  margin-right: 45px;
+  font-size: 17px;
+}
+
+.replacements-list li {
+  margin-left: 0; 
+  margin-top: 15px;
+}
+
+.replacement {
+  margin-left: 20px;
+}
+
+.add-ingredients{
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  margin-left: 70px;
+  margin-right: 70px;
+}
+
+.add-ingredients-button:active {
+  color: #000000;
+  box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.5);
+}

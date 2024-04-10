@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+
+.grocery-mealmap-container {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column; 
+  background-color: #c9c8c6;
+}
+
+.grocery-lists-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.grocery-lists-main-content {
+  margin-top: 37px;
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.all-lists-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+}
+
+.tabs-grocery-lists {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+  margin-left: 415px;
+ 
+  margin-top: 40px;
+  margin-bottom: 53px;
+  border-radius: 50px;
+  height: 75px;
+  width:700px;
+  padding-top: 5px;
+  border-width: 1.5px;
+  border-color: #656565;
+}
+
+.tab-grocery-lists {
+  font-family: 'Lato', sans-serif;
+  border: none;
+  cursor: pointer;
+  background-color: #c9c8c6;
+  font-size: 19px;
+  font-weight: 55px;
+  color: rgb(0, 0, 0);
+  width: 120px;
+  height: 62px;
+}
+
+
+.tab-grocery-lists.active {
+  border-radius: 20px;
+  box-shadow: 0 3px 7px 0 rgba(43, 43, 43, 0.1), 0 5px 10px 0 rgba(43, 43, 43, 0.1);
+  color: #496a62;
+}
+
+.lists-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 60px;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 70px;
+}
+
+.list-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 40px;
+  position: relative;
+  border-radius: 5px;
+  height: 200px;
+  width: 300px;
+  background-color: #5b7d6cb2;
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1), 0 5px 19px 0 rgba(0, 0, 0, 0.1);
+}
+
+.grocery-list-image {
+  flex-grow: 1;
+
+}
+
+.bottom-list-label {
+  border-top: 2px solid #344a45;
+  background-color: #344a4568;
+  padding-top: 15px;
+  height: 60px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.grocery-list-name {
+  font-family: 'Lato', sans-serif;
+  margin-left: 40px;
+  font-size: 19px; 
+  color: #101111;
+
+}
+
+
+
