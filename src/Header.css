@@ -10,3 +10,8 @@
   background-position: center;
   cursor: pointer;
 }
+
+.user-name {
+  margin-right: 70px;
+  margin-left: 18px;
+}

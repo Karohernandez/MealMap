@@ -6,7 +6,7 @@
   height: 100vh;
   margin: 0;
   flex-direction: column; 
-  background-color: #c9c8c6;
+  background-color: #dfdddd;
 }
 
 .grocery-lists-content {
@@ -47,7 +47,7 @@
   font-family: 'Lato', sans-serif;
   border: none;
   cursor: pointer;
-  background-color: #c9c8c6;
+  background-color: #dfdddd;
   font-size: 19px;
   font-weight: 55px;
   color: rgb(0, 0, 0);

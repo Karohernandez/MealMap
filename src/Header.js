@@ -9,7 +9,7 @@ const Header = () => {
       
       <div className='flex justify-between items-center'>
         <div className="user-logo"></div>
-        <div className="font-sans text-lg mr-10 px-9">User</div>
+        <div className="user-name">Johnny</div>
 
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-500 mx-20"></div>

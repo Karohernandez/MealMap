@@ -24,7 +24,7 @@ const Sidebar = () => {
           <Link className="sidebar-link" to="/add-recipe-page"><div className="sidebar-icon2"></div><b>Add Recipe</b></Link>
           <Link className="sidebar-link" to="/all-grocery-list-page"><div className="sidebar-icon3"></div><b>Grocery Lists</b></Link>
           <Link className="sidebar-link" to="/about-page"><div className="sidebar-icon4"></div><b>About</b></Link>
-          <Link className="sidebar-link5" to="">Log Out</Link>
+          <Link className="sidebar-link5" to="/login">Log Out</Link>
 
         </nav>
       </div>

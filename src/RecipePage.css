@@ -10,7 +10,8 @@
   margin: 0;
   overflow: auto;
   flex-direction: column;
-  background-color: #d6d6d6;
+  background-color: #dfdddd;
+  padding-bottom: 30px;
 }
 
 .tab-recipe {
@@ -19,16 +20,16 @@
   background-color: #bbbbbb;
   padding-top: 10px;
   padding-bottom: 10px;
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 150px;
+  margin-right: 150px;
   margin-top: 55px;
   border-radius: 20px;
   height: 60px;
+ 
 }
 
 .tab-info-title {
   font-family: 'Playfair Display', serif;
-  margin-top: 4px;
   font-size: 27px;
   font-weight: 500;
 }
@@ -50,7 +51,7 @@
 .ingredients {
   margin-right: 70px;
   background-color: #a09f9f42;
-  border-radius: 20px;
+  border-radius: 10px;
   width: 500px;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -92,7 +93,7 @@
 
 .alternatives {
   margin-left: 70px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #a09f9f42;
   width: 500px;
   padding-top: 40px;
@@ -136,7 +137,7 @@
 .add-ingredients{
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 30px;
   margin-left: 70px;
   margin-right: 70px;
 }
@@ -144,4 +145,65 @@
 .add-ingredients-button:active {
   color: #000000;
   box-shadow: 1px 1px 1px rgba(0.5,0.5,0.5,0.5);
+}
+
+
+.add-ingredient-recipe {
+  margin-left: 114px;
+  margin-right: 114px;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: #a09f9f42;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+.new-ingredient-container {
+  margin-left: 20px;
+}
+
+input[type="text"] {
+  width: 30%; 
+  padding: 8px 15px; 
+  padding-left: 10px;
+  border: 1px solid #d2e9f8; 
+  border-radius: 10px; 
+  box-sizing: border-box; 
+}
+
+#new-quantity-input {
+  width: 200px;
+}
+
+input[type="text"]:focus {
+  outline: none; 
+  border-color: #d2e9f8;
+}
+
+.new-ingredient-container label {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.new-ingredient-label {
+  margin: 10px;
+  font-size: 19px;
+  font-family: 'Lato', sans-serif;
+}
+
+.add-new-ingredient-button {
+  font-family: 'Lato', sans-serif;
+  padding: 10px 10px;
+  width: 160px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #496a62;
+  font-weight: 30px;
+  font-size: 17px;
+  color: white;
+  margin-left: 30px;
+  margin-top: 30px;
 }

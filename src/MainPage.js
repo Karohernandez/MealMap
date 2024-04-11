@@ -20,19 +20,16 @@ const MainPage = () => {
       { id: 4, name: 'Waffles' },
       { id: 5, name: 'Omelette'},
       { id: 6, name: 'Eggs & Chorizo'},
-    
     ],
     Lunch: [
       { id: 7, name: 'Turkey Sandwich'},
       { id: 8, name: 'Ceaser Salad' },
       { id: 9, name: 'Homemade Pizza' },
-    
     ],
 
     Dinner: [
       { id: 10, name: 'Spaghetti' },
       { id: 11, name: 'Fish Tacos' },
-     
     ],
 
     Snack: [
@@ -84,7 +81,7 @@ const MainPage = () => {
 
         <div className='instruction-text'>
           <span className='view-recipe-title'><b>Click Recipe to View</b></span>
-          <div className='add-recipe-to-list'><Link className="" to="/select-list-page"><button className="text-black bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-5 py-3 text-center">Add to Grocery List</button></Link></div>
+          <div className='add-recipe-to-list'><Link className="" to="/select-list-page"><button className="text-white bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-5 py-3 text-center">Add to Grocery List</button></Link></div>
         </div>
 
         <section className="recipe-cards">
@@ -113,11 +110,6 @@ const MainPage = () => {
             </div>
           ))}
         </section>
-
-        
-
-        
-
       </main>
       </div>
     </div>

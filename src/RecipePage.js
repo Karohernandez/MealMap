@@ -12,7 +12,9 @@ const fetchRecipeById = async (id) => {
   const recipes = {
     "1": { name: "Pancakes", ingredients: ["1 egg", "1 1/4 cup of milk", "1 1/2 cup of flour", "3 1/2 tbsp baking soda", "3 tbsp butter", "1 tbsp white sugar"] },
     "2": { name: "Breakfast Tacos", ingredients: ["4 large eggs", "2 green onions", "1 tbsp olive oil", "1/2 cup shredded cheese", "1/2 avocado", "4 tortillas"] },
-    "3": {name: "Yogurt Bowl", ingredients: ["1 cup greek yogurt", "3 strawberries", "1/4 cup granola"]}
+    "3": {name: "Yogurt Bowl", ingredients: ["1 cup greek yogurt", "3 strawberries", "1/4 cup granola"]},
+    "4": {name: "W", ingredients: ["1 cup greek yogurt", "3 strawberries", "1/4 cup granola"]}
+
   };
 
   return recipes[id]; 
@@ -23,7 +25,9 @@ const fetchReplacementById = async (id) => {
   const replacements = {
     "1": { item: "Pancakes", replacements: ["Replacement 1", "Replacement 2"] },
     "2": { item: "Breakfast Tacos", replacements: ["Replacement 1", "Replacement 2"] },
-    "3": { item: "Yogurt Bowl", replacements: ["Replacement 1", "Replacement 2"] }
+    "3": { item: "Yogurt Bowl", replacements: ["Replacement 1", "Replacement 2"] },
+    "4": {item: "Yogurt Bowl", replacements: ["1 cup greek yogurt", "3 strawberries", "1/4 cup granola"]}
+
   };
   return replacements[id]; 
 };
@@ -36,6 +40,27 @@ const RecipePage = () => {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [selectedReplacements, setSelectedReplacements] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const [ingredient, setIngredient] = useState([]);
+  const [currentIngredient, setCurrentIngredient] = useState('');
+  const [currentQuantity, setCurrentQuantity] = useState('');
+  const [currentUnit, setCurrentUnit] = useState('tsp');
+
+  const addIngredient = () => {
+    setIngredient([...ingredient, { name: currentIngredient, quantity: currentQuantity, unit: currentUnit }]);
+    setCurrentIngredient('');
+    setCurrentQuantity('');
+    setCurrentUnit('tbsp');
+
+    const recipeData = {
+      ingredient
+    };
+
+    // add ingredient to recipe
+
+    return <div>Adding Ingredient....</div>
+  };
+
 
 
   useEffect(() => {
@@ -137,14 +162,44 @@ const RecipePage = () => {
               ))}
               </ul>
             </div>
-            
+
           </main>
+
+          <div className='add-ingredient-recipe'>
+            <label className='new-ingredient-label'><b>Add New Ingredient</b></label>
+              <form id="new-ingredient-input">
+                <div className="new-ingredient-container">
+                  <label htmlFor="new-ingredient-name">Ingredient:</label>
+                  <input type="text" id="new-ingredient-name" name="new-ingredient-name" value={currentIngredient} onChange={(e) => setCurrentIngredient(e.target.value)} placeholder="Enter Ingredient..."/>
+
+                  <label htmlFor="new-quantity-input">Quantity:</label>
+                  <input type="text" id="new-quantity-input" name="new-quantity-input" value={currentQuantity} onChange={(e) => setCurrentQuantity(e.target.value)} placeholder="Enter Quantity..."/>
+
+                  <label htmlFor="new-ingredient-units">Choose a unit:</label>
+                  <select name="new-ingredient-units" id="new-ingredient-units" value={currentUnit} onChange={e => setCurrentUnit(e.target.value)}>
+                    <option value="tsp">Teaspoons (tsp)</option>
+                    <option value="tbsp">Tablespoons (tbsp)</option>
+                    <option value="cup">Cups</option>
+                    <option value="ml">Milliliters (ml)</option>
+                    <option value="l">Liters (l)</option>
+                    <option value="g">Grams (g)</option>
+                    <option value="kg">Kilograms (kg)</option>
+                    <option value="oz">Ounces (oz)</option>
+                    <option value="lb">Pounds (lb)</option>
+                    <option value="count">Count</option> 
+                  </select>
+
+                  <button type="button" className="add-new-ingredient-button" onClick={addIngredient}><b>Add Ingredient</b></button>
+                </div>
+              </form>
+            </div>
+
 
           </div>
 
           <div className="add-ingredients">
-            <Link className="" to="/select-list-page"><button className="text-black bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-2 py-3 mx-9 text-center" onClick={handleSubmit}>Add To Shopping List</button></Link>
-            <button className="text-black bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-10 py-3 mx-9 text-center">Edit Recipe</button>
+            <Link className="" to="/select-list-page"><button className="text-white bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-2 py-3 mx-9 text-center" onClick={handleSubmit}>Add To Shopping List</button></Link>
+            {/* <button className="text-black bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-10 py-3 mx-9 text-center">Edit Recipe</button> */}
 
           </div>
 
