@@ -73,8 +73,8 @@ h1 {
   background-size: contain;
   background-image: url(./images/recipe-book.png);
   position: absolute; /* Or 'absolute' */
-  top: 195px;
-  left: 150px;
+  top: 200px;
+  left: 167px;
   z-index: 1000; 
   width: 26px; 
   height: 26px; 
@@ -90,8 +90,8 @@ h1 {
   background-size: contain;
   background-image: url(./images/whisk.png);
   position: absolute; /* Or 'absolute' */
-  top: 278px;
-  left: 150px;
+  top: 284px;
+  left: 167px;
   z-index: 1000; 
   width: 26px; 
   height: 26px; 
@@ -107,8 +107,8 @@ h1 {
   background-size: contain;
   background-image: url(./images/trolley-cart.png);
   position: absolute; /* Or 'absolute' */
-  top: 366px;
-  left: 150px;
+  top: 370px;
+  left: 167px;
   z-index: 1000; 
   width: 26px; 
   height: 26px; 
@@ -124,8 +124,8 @@ h1 {
   background-size: contain;
   background-image: url(./images/information.png);
   position: absolute; /* Or 'absolute' */
-  top: 450px;
-  left: 150px;
+  top: 454px;
+  left: 167px;
   z-index: 1000; 
   width: 24px; 
   height: 24px; 

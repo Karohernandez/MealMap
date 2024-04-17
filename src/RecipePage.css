@@ -91,6 +91,21 @@
   margin-left: 20px;
 }
 
+.delete-ingredient-button {
+  font-family: 'Lato', sans-serif;
+  padding: 10px 10px;
+  width: 165px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #496a62;
+  font-weight: 700;
+  font-size: 17px;
+  color: white;
+  margin-top: 30px;
+  margin-left: 60px;
+}
+
 .alternatives {
   margin-left: 70px;
   border-radius: 10px;
@@ -120,6 +135,7 @@
 .replacements-list {
   list-style-type: none; 
   margin-top: 25px;
+  margin-left: 46px;
   padding-left: 0; 
   margin-right: 45px;
   font-size: 17px;
@@ -132,6 +148,21 @@
 
 .replacement {
   margin-left: 20px;
+}
+
+.delete-alternative-button {
+  font-family: 'Lato', sans-serif;
+  padding: 10px 10px;
+  width: 165px;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  background-color: #496a62;
+  font-weight: 700;
+  font-size: 17px;
+  color: white;
+  margin-top: 30px;
+  margin-left: 60px;
 }
 
 .add-ingredients{
@@ -201,7 +232,7 @@ input[type="text"]:focus {
   cursor: pointer;
   border-radius: 15px;
   background-color: #496a62;
-  font-weight: 30px;
+  font-weight: 600;  
   font-size: 17px;
   color: white;
   margin-left: 30px;

@@ -136,6 +136,8 @@ const RecipePage = () => {
               </li>
             ))}
             </ul>
+
+            <button className='delete-ingredient-button'><span className='delete-ingredient'>Delete Ingredient</span></button>
           </div>
 
 
@@ -161,6 +163,10 @@ const RecipePage = () => {
                 </li>
               ))}
               </ul>
+              <button className='delete-alternative-button'><span className='delete-alternative'>Delete Ingredient</span></button>
+
+
+              
             </div>
 
           </main>
@@ -189,7 +195,7 @@ const RecipePage = () => {
                     <option value="count">Count</option> 
                   </select>
 
-                  <button type="button" className="add-new-ingredient-button" onClick={addIngredient}><b>Add Ingredient</b></button>
+                  <button type="button" className="add-new-ingredient-button" onClick={addIngredient}><span>Add Ingredient</span></button>
                 </div>
               </form>
             </div>

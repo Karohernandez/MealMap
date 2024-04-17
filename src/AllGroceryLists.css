@@ -107,5 +107,22 @@
 
 }
 
+.delete-grocery-list {
+  background-size: contain;
+  background-image: url(./images/trash.png);
+  position: absolute; /* Or 'absolute' */
+  top: 145px;
+  left: 250px;
+  z-index: 1000; 
+  width: 20px; 
+  height: 20px; 
+  border: 2px;
+  margin-top: 13px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
 
 

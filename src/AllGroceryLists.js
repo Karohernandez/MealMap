@@ -46,6 +46,10 @@ const AllGroceryLists = () => {
  
   };
 
+  const deleteList = (id) => {
+
+  }
+
 
   return (
     <div className='grocery-mealmap-container'>
@@ -71,6 +75,10 @@ const AllGroceryLists = () => {
           ))}
         </div>
 
+        <div className='instruction-text'>
+          <span className='view-recipe-title'><b>Click Grocery List to View</b></span>
+        </div>
+
 
         <section className="lists-cards">
           {groceryLists[activeTab].map((grocerylist) => (
@@ -89,15 +97,14 @@ const AllGroceryLists = () => {
                   <Link to={`/grocery-list-page/${grocerylist.id}`} style={{ textDecoration: 'none' }}>
                     <span className="grocery-list-name">{grocerylist.name}</span>
                   </Link>
+
+                  <button className='delete-grocery-list' onClick = {deleteList(groceryList.id)}></button>
+                  <span class="delete-tooltiptext">Delete List</span>
                 </label>
                 </div>
             </div>
           ))}
         </section>
-
-        <div>
-          <button className='delete-grocery-list'></button>
-        </div>
 
         </main>
       </div>
