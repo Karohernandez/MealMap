@@ -42,7 +42,7 @@ const GroceryListPage = () => {
     <div className='list-mealmap-container'> 
       <Header />
 
-      <div className="tab-list"><span className="tab-list-title">Recipe Info</span></div>
+      <div className="tab-list"><span className="tab-list-title">Grocery List Info</span></div>
 
       <div className='list-content'>
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />

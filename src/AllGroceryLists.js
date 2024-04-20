@@ -5,14 +5,21 @@ import {useState} from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import './AllGroceryLists.css'
+import BottomNavbar from './BottomNav';
+
+import groceryIcon from './images/Grocery.png'; 
+
 
 
 const AllGroceryLists = () => {
   const [groceryList, setGroceryList] = useState([]);
   const [activeTab, setActiveTab] = useState('Planned'); 
-
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const groceryIcons = {
+    Planned: groceryIcon,
+    Completed: groceryIcon,
+  };
 
   const groceryLists = {
     Planned: [
@@ -83,7 +90,7 @@ const AllGroceryLists = () => {
         <section className="lists-cards">
           {groceryLists[activeTab].map((grocerylist) => (
               <div key={grocerylist.id} className="list-card">
-                <div className='grocery-list-image'></div>
+                <div className='grocery-list-image' style={{ backgroundImage: `url(${groceryIcons[activeTab]})` }}></div>
                 <div className='bottom-list-label'>
                 <input
                   type="checkbox"
@@ -108,6 +115,7 @@ const AllGroceryLists = () => {
 
         </main>
       </div>
+      <BottomNavbar/>
   </div>
   )
 }

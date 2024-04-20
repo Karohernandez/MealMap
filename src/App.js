@@ -23,7 +23,7 @@ function App() {
         <Route path="/edit-recipe-page" element={<EditRecipe />} />
         <Route path="/all-grocery-list-page" element={<AllGroceryLists/>} />
         <Route path="/grocery-list-page/:listId" element={<GroceryListPage/>} />
-        <Route path="/select-list-page" element={<SelectListPage/>} />
+        <Route path="/select-list-page/:selectedIngredients" element={<SelectListPage/>} />
         <Route path="/about-page" element={<About/>} />
 
       </Routes>

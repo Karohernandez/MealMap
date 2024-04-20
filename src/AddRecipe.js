@@ -2,6 +2,8 @@ import React from 'react';
 import './AddRecipe.css';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import BottomNavbar from './BottomNav';
+
 
 import { useState } from 'react';
 
@@ -145,6 +147,7 @@ const AddRecipe = () => {
           
         </main>
       </div>
+      <BottomNavbar/>
     </div>
   );
 };

@@ -98,7 +98,6 @@ const RecipePage = () => {
     const checkedIngredients = recipeDetails.ingredients.filter((_, index) => selectedIngredients[index]);
     
 
-    // instead of adding to local storage, redirect to new page and select grocery list - done by Payson
   };
 
   if (!recipeDetails) return <div>Loading recipe details...</div>;
@@ -204,7 +203,7 @@ const RecipePage = () => {
           </div>
 
           <div className="add-ingredients">
-            <Link className="" to="/select-list-page"><button className="text-white bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-2 py-3 mx-9 text-center" onClick={handleSubmit}>Add To Shopping List</button></Link>
+            <Link className="" to={`/select-list-page/${selectedIngredients}`}><button className="text-white bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-2 py-3 mx-9 text-center">Add To Shopping List</button></Link>
             {/* <button className="text-black bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-10 py-3 mx-9 text-center">Edit Recipe</button> */}
 
           </div>

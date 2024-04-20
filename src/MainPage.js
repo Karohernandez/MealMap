@@ -3,10 +3,26 @@ import { Link } from 'react-router-dom';
 import './MainPage.css';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import BottomNavbar from './BottomNav';
+
+import breakfastIcon from './images/Breakfast.png'; // Assuming this is the correct path
+import lunchIcon from './images/Lunch.png'; // Assuming this is the correct path
+import dinnerIcon from './images/Dinner.png'; // Assuming this is the correct path
+import snackIcon from './images/Snack.png'; // Assuming this is the correct path
+
+
+
 
 const MainPage = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('Breakfast'); 
+
+  const mealIcons = {
+    Breakfast: breakfastIcon, 
+    Lunch: lunchIcon,       
+    Dinner: dinnerIcon,      
+    Snack: snackIcon ,                
+  };
 
   // EXAMPLE DATA
 
@@ -85,33 +101,31 @@ const MainPage = () => {
         </div>
 
         <section className="recipe-cards">
-          {recipes[activeTab].map((recipe) => (
-              <div key={recipe.id} className="card">
-                <div className='recipe-image'></div>
-                <div className='bottom-label'>
-                <input
-                  type="checkbox"
-                  id={`recipe-${recipe.id}`}
-                  name={`recipe-${recipe.id}`}
-                  checked={recipe.selected}
-                  onChange={() => toggleRecipeSelection(activeTab, recipe.id)}
-                />
-                <label htmlFor={`recipe-${recipe.id}`}>
-                  
-                  <Link to={`/user-recipe-page/${recipe.id}`} style={{ textDecoration: 'none' }}>
-                    <span className="recipe-name">{recipe.name}</span>
-                  </Link>
-
-                  <button className='delete-recipe' onClick = {deleteRecipe(recipe.id)}></button>
-                  <span class="delete-tooltiptext">Delete Recipe</span>
-
-                </label>
-                </div>
+        {recipes[activeTab].map((recipe) => (
+          <div key={recipe.id} className="card">
+            <div className='recipe-image-icon' style={{ backgroundImage: `url(${mealIcons[activeTab]})` }}></div>
+            <div className='bottom-label'>
+              <input
+                type="checkbox"
+                id={`recipe-${recipe.id}`}
+                name={`recipe-${recipe.id}`}
+                checked={recipe.selected}
+                onChange={() => toggleRecipeSelection(activeTab, recipe.id)}
+              />
+              <label htmlFor={`recipe-${recipe.id}`}>
+                <Link to={`/user-recipe-page/${recipe.id}`} style={{ textDecoration: 'none' }}>
+                  <span className="recipe-name">{recipe.name}</span>
+                </Link>
+                <button className='delete-recipe' onClick={() => deleteRecipe(recipe.id)}></button>
+                <span className="delete-tooltiptext">Delete Recipe</span>
+              </label>
             </div>
-          ))}
-        </section>
+          </div>
+        ))}
+      </section>
       </main>
       </div>
+      <BottomNavbar/>
     </div>
   );
 };

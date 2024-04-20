@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+.bottom-navbar {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #3a4941; 
+  color: white; 
+  padding: 15px 0;
+  margin-top: 20px;
+  border-top: 2px solid #ffffff; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center; 
+}
+
+.bottom-nav-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+}
