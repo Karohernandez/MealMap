@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './AddRecipe.css';
 import Sidebar from './Sidebar';
 import Header from './Header';
 
-import { useState } from 'react';
-
 const AddRecipe = () => {
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [recipeName, setRecipeName] = useState('');
   const [ingredients, setIngredients] = useState([]);
@@ -17,14 +14,11 @@ const AddRecipe = () => {
   const [currentRestriction, setCurrentRestriction] = useState('vegan-r');
   const [mealType, setMealType] = useState('');
 
-
   const addIngredient = () => {
     setIngredients([...ingredients, { name: currentIngredient, quantity: currentQuantity, unit: currentUnit }]);
     setCurrentIngredient('');
     setCurrentQuantity('');
     setCurrentUnit('tbsp');
-
-    return <div>Adding Ingredient....</div>
   };
 
   const addRestriction = () => {
@@ -33,7 +27,7 @@ const AddRecipe = () => {
     }
   };
 
-  const submitRecipe = (e) => {
+  const submitRecipe = async (e) => {
     e.preventDefault();
     const recipeData = {
       name: recipeName,
@@ -42,12 +36,32 @@ const AddRecipe = () => {
       mealType
     };
 
-    setRecipeName('');
-    setCurrentIngredient('');
-    setCurrentQuantity('');
-    setCurrentUnit('tsp');
-    console.log(recipeData);
-    // ADD DATABASE CODE
+    console.log(recipeData); // For debugging, can be removed later
+
+    try {
+      const response = await fetch('https://localhost:7128/api/recipe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(recipeData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Recipe added successfully:', result);
+
+      // Clear the form fields after successful submission
+      setRecipeName('');
+      setIngredients([]);
+      setRestrictions([]);
+      setMealType('');
+    } catch (error) {
+      console.error('Error submitting recipe:', error);
+    }
   };
 
   const addToMealType = (type) => {
@@ -58,40 +72,49 @@ const AddRecipe = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-
   return (
     <div className="addrecipe-mealmap-container">
-      
       <Header />
-
       <div className='addrecipe-content'>
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
         <main className={`addrecipe-main-content ${isSidebarOpen ? 'with-sidebar' : ''}`}>
-          <div className="addrecipe-tabs">
-            <span className='enter-title'>Enter Recipe Info</span>
-          </div>
-
-
-
           <form id="recipe-inputs">
-            <div class="input-container1 input-container">
+            <div className="input-container1 input-container">
               <label htmlFor="recipe-name-input">Recipe Name:</label>
-              <input type="text" id="recipe-name-input" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} placeholder="Enter Name..."/>
+              <input
+                type="text"
+                id="recipe-name-input"
+                value={recipeName}
+                onChange={(e) => setRecipeName(e.target.value)}
+                placeholder="Enter Name..."
+              />
             </div>
 
-
-
-            <div class="input-container2 input-container" id="input-container-ingredient">
+            <div className="input-container2 input-container">
               <label htmlFor="text-input-ingredient">Ingredient:</label>
-              <input type="text" id="text-input" name="ingredient-name-input" value={currentIngredient} onChange={(e) => setCurrentIngredient(e.target.value)} placeholder="Enter Ingredient..."/>
+              <input
+                type="text"
+                id="text-input-ingredient"
+                value={currentIngredient}
+                onChange={(e) => setCurrentIngredient(e.target.value)}
+                placeholder="Enter Ingredient..."
+              />
 
-              <label htmlFor="text-input-ingredient">Quantity:</label>
-              <input type="text-ingredient" id="text-input" name="number-quantity-input" value={currentQuantity} onChange={(e) => setCurrentQuantity(e.target.value)} placeholder="Enter Quantity..."/>
-
-              
               <label htmlFor="number-quantity-input">Quantity:</label>
-              <select name="ingredient-units" id="ingredient-units" value={currentUnit} onChange={e => setCurrentUnit(e.target.value)}>
+              <input
+                type="text"
+                id="number-quantity-input"
+                value={currentQuantity}
+                onChange={(e) => setCurrentQuantity(e.target.value)}
+                placeholder="Enter Quantity..."
+              />
+
+              <select
+                name="ingredient-units"
+                id="ingredient-units"
+                value={currentUnit}
+                onChange={e => setCurrentUnit(e.target.value)}
+              >
                 <option value="tsp">Teaspoons (tsp)</option>
                 <option value="tbsp">Tablespoons (tbsp)</option>
                 <option value="cup">Cups</option>
@@ -101,20 +124,22 @@ const AddRecipe = () => {
                 <option value="kg">Kilograms (kg)</option>
                 <option value="oz">Ounces (oz)</option>
                 <option value="lb">Pounds (lb)</option>
-                <option value="lb">Count</option>
-
+                <option value="count">Count</option>
               </select>
 
-              <button className="add-single-ingredient-button" onClick={addIngredient}><b>Add Ingredient</b></button>
+              <button className="add-single-ingredient-button" onClick={addIngredient}>
+                <b>Add Ingredient</b>
+              </button>
             </div>
 
-
-
-            <div class="input-container3 input-container">
-              
+            <div className="input-container3 input-container">
               <label htmlFor="restriction-values">Restriction:</label>
-
-              <select name="restrictions" id="food-restrictions" value={currentRestriction} onChange={e => setCurrentRestriction(e.target.value)}>
+              <select
+                name="restrictions"
+                id="food-restrictions"
+                value={currentRestriction}
+                onChange={e => setCurrentRestriction(e.target.value)}
+              >
                 <option value="vegetarian-r">Vegetarian</option>
                 <option value="vegan-r">Vegan</option>
                 <option value="kosher-r">Kosher</option>
@@ -122,27 +147,36 @@ const AddRecipe = () => {
                 <option value="gluten-r">Gluten Free</option>
                 <option value="dairy-r">Dairy Free</option>
                 <option value="sugar-r">Sugar Free</option>
-                <option value="sugar-r">Keto</option>
+                <option value="keto-r">Keto</option>
                 <option value="other-r">Other</option>
-                
               </select>
 
-              <button className="add-single-restriction-button" onClick={addRestriction}><b>Add Restriction</b></button>
+              <button className="add-single-restriction-button" onClick={addRestriction}>
+                <b>Add Restriction</b>
+              </button>
+            </div>
 
+            <div className="meal-buttons">
+              <button className="breakfast-button meal-button" onClick={() => addToMealType('Breakfast')}>
+                <b>Breakfast</b>
+              </button>
+              <button className="lunch-button meal-button" onClick={() => addToMealType('Lunch')}>
+                <b>Lunch</b>
+              </button>
+              <button className="dinner-button meal-button" onClick={() => addToMealType('Dinner')}>
+                <b>Dinner</b>
+              </button>
+              <button className="snack-button meal-button" onClick={() => addToMealType('Snack')}>
+                <b>Snack</b>
+              </button>
+            </div>
+
+            <div className="submit-button">
+              <button type="submit" className="submit-recipe" onClick={submitRecipe}>
+                <b>Add Recipe</b>
+              </button>
             </div>
           </form>
-
-          <div className="meal-buttons">
-            <button className="breakfast-button meal-button" onClick={() => addToMealType('Breakfast')}><b>Breakfast</b></button>
-            <button className="lunch-button meal-button" onClick={() => addToMealType('Lunch')}><b>Lunch</b></button>
-            <button className="dinner-button meal-button" onClick={() => addToMealType('Dinner')}><b>Dinner</b></button>
-            <button className="snack-button meal-button" onClick={() => addToMealType('Snack')}><b>Snack</b></button>
-          </div>
-
-          <div className="submit-button">
-            <button type="submit" className="submit-recipe" onClick={submitRecipe}><b>Add Recipe</b></button>
-          </div>
-          
         </main>
       </div>
     </div>
