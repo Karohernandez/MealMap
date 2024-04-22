@@ -62,7 +62,6 @@
   color: rgb(0, 0, 0);
   width: 120px;
   height: 62px;
-
 }
 
 .tab.active {
@@ -121,7 +120,6 @@
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
 }
 
-
 .recipe-image-icon {
   width: 130px; 
   height: 130px; 
@@ -134,7 +132,6 @@
   border-top-left-radius: 5px; 
   border-top-right-radius: 5px; 
 }
-
 
 .bottom-label {
   border-top: 2px solid #344a45;
@@ -162,7 +159,6 @@
   cursor: pointer;
 }
 
-
 .delete-tooltiptext {
   visibility: hidden;
   width: 120px;
@@ -171,13 +167,11 @@
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-
   position: absolute;
   z-index: 1;
   bottom: 100%;
   left: 50%;
-  margin-left: -60px; /* Use half of the width (120px/2 = 60px) to center the tooltip */
-
+  margin-left: -60px; 
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -193,7 +187,7 @@
   border-color: black transparent transparent transparent;
 }
 
-.delete-tooltiptext:hover  {
+.delete-tooltiptext:hover {
   visibility: visible;
   opacity: 1;
 }
@@ -208,7 +202,6 @@
 .recipe-name:hover {
   color: #2c3e50; 
 }
-
 
 .add-recipe-to-list{
  margin-top: 15px;
@@ -226,7 +219,6 @@ input[type="checkbox"] {
   height: 16px;
   width: 16px;
   margin-left: 25px;
- 
 }
 
 

@@ -175,10 +175,10 @@ const RecipePage = () => {
               <form id="new-ingredient-input">
                 <div className="new-ingredient-container">
                   <label htmlFor="new-ingredient-name">Ingredient:</label>
-                  <input type="text" id="new-ingredient-name" name="new-ingredient-name" value={currentIngredient} onChange={(e) => setCurrentIngredient(e.target.value)} placeholder="Enter Ingredient..."/>
+                  <input type="text-1" id="new-ingredient-name" name="new-ingredient-name" value={currentIngredient} onChange={(e) => setCurrentIngredient(e.target.value)} placeholder="Enter Ingredient..."/>
 
                   <label htmlFor="new-quantity-input">Quantity:</label>
-                  <input type="text" id="new-quantity-input" name="new-quantity-input" value={currentQuantity} onChange={(e) => setCurrentQuantity(e.target.value)} placeholder="Enter Quantity..."/>
+                  <input type="text-1" id="new-quantity-input" name="new-quantity-input" value={currentQuantity} onChange={(e) => setCurrentQuantity(e.target.value)} placeholder="Enter Quantity..."/>
 
                   <label htmlFor="new-ingredient-units">Choose a unit:</label>
                   <select name="new-ingredient-units" id="new-ingredient-units" value={currentUnit} onChange={e => setCurrentUnit(e.target.value)}>

@@ -4,8 +4,6 @@ import Sidebar from './Sidebar';
 import Header from './Header';
 import BottomNavbar from './BottomNav';
 
-
-
 const SelectListPage = ({ ingredientsToAdd }) => {
   const [shoppingLists, setShoppingLists] = useState([]);
   const [selectedList, setSelectedList] = useState('');

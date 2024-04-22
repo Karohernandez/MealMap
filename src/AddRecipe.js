@@ -107,7 +107,7 @@ const AddRecipe = () => {
 
               </select>
 
-              <button className="add-single-ingredient-button" onClick={addIngredient}><b>Add Ingredient</b></button>
+              <button type="button" className="add-single-ingredient-button" onClick={addIngredient}><b>Add Ingredient</b></button>
             </div>
 
 
@@ -129,7 +129,7 @@ const AddRecipe = () => {
                 
               </select>
 
-              <button className="add-single-restriction-button" onClick={addRestriction}><b>Add Restriction</b></button>
+              <button type="button" className="add-single-restriction-button" onClick={addRestriction}><b>Add Restriction</b></button>
 
             </div>
           </form>
