@@ -39,7 +39,7 @@ const AddRecipe = () => {
     console.log(recipeData); // For debugging, can be removed later
 
     try {
-      const response = await fetch('https://localhost:7128/api/recipe', {
+      const response = await fetch('https://mealmap1.azurewebsites.net/api/recipe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
