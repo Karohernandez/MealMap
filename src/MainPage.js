@@ -1,183 +1,149 @@
-// import React, { useState } from 'react';
+
+
+// import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 // import './MainPage.css';
 // import Sidebar from './Sidebar';
 // import Header from './Header';
 
 // const MainPage = () => {
-//   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-//   const [activeTab, setActiveTab] = useState('Breakfast'); 
+//     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+//     const [activeTab, setActiveTab] = useState('Breakfast');
+//     const [recipes, setRecipes] = useState([]);
 
-//   // EXAMPLE DATA
+//     // Fetch recipes when the component mounts or when activeTab changes
+//     useEffect(() => {
+//         const fetchRecipesByType = async () => {
+//           const mealType = activeTab.toLowerCase(); // Ensure this is lowercase to match your working backend URL
+//           const url = `https://mealmap1.azurewebsites.net/api/recipe/type/${mealType}`;
+//             console.log(url);
+//           try {
+//             const response = await fetch(url);
+//             if (!response.ok) {
+//               throw new Error(`HTTP error! Status: ${response.status}`);
+//             }
+//             const data = await response.json();
+//             setRecipes(data);
+//           } catch (error) {
+//             console.error("Failed to fetch recipes:", error);
+//           }
+//         };
+      
+//         fetchRecipesByType();
+//       }, [activeTab]);
+      
 
-//   // API CALLS: Retrieve name of recipes from db and store in these arrays. That is how they will be displayed, the name ID be passed in to the recipe page
-//   // ideally make an ID in db that goes with recipe 
-//   const recipes = { 
-//     Breakfast: [
-//       { id: 1, name: 'Pancakes' },
-//       { id: 2, name: 'Breakfast Tacos'},
-//       { id: 3, name: 'Yogurt Bowl' },
-//       { id: 4, name: 'Waffles' },
-//       { id: 5, name: 'Omelette'},
-//       { id: 6, name: 'Eggs & Chorizo'},
-    
-//     ],
-//     Lunch: [
-//       { id: 7, name: 'Turkey Sandwich'},
-//       { id: 8, name: 'Ceaser Salad' },
-//       { id: 9, name: 'Homemade Pizza' },
-    
-//     ],
+//     const toggleSidebar = () => {
+//         setIsSidebarOpen(!isSidebarOpen);
+//     };
 
-//     Dinner: [
-//       { id: 10, name: 'Spaghetti' },
-//       { id: 11, name: 'Fish Tacos' },
-     
-//     ],
+//     const toggleRecipeSelection = (id) => {
+//         const updatedRecipes = recipes.map((recipe) => {
+//             if (recipe.id === id) {
+//                 return { ...recipe, selected: !recipe.selected };
+//             }
+//             return recipe;
+//         });
+//         setRecipes(updatedRecipes);
+//     };
 
-//     Snack: [
-//       { id: 12, name: 'Icecream' },
-//       { id: 13, name: 'Yogurt' },
-//     ]
-//   };
+//     const deleteRecipe = (id) => {
+//         // Implement the delete logic here, possibly making an API call to delete a recipe
+//         console.log('Deleting recipe with id:', id);
+//         // Call to API would go here
+//     };
 
-//   const toggleSidebar = () => {
-//     setIsSidebarOpen(!isSidebarOpen);
-//   };
+//     return (
+//         <div className="mealmap-container">
+//             <Header />
+//             <div className='content'>
+//                 <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-//   const toggleRecipeSelection = (category, id) => {
-    
-//     const updatedRecipes = { ...recipes };
-//     const recipeIndex = updatedRecipes[category].findIndex(recipe => recipe.id === id);
-//     if (recipeIndex !== -1) {
-//       updatedRecipes[category][recipeIndex].selected = !updatedRecipes[category][recipeIndex].selected;
-//     }
-//   };
+//                 <main className={`main-content ${isSidebarOpen ? 'with-sidebar' : ''}`}>
+//                     <div className='all-recipes-title'><b>All Recipes</b></div>
 
-//   const deleteRecipe = (id) => {
+//                     <div className="tabs">
+//                         {['Breakfast', 'Lunch', 'Dinner', 'Snack'].map((category) => (
+//                             <button
+//                                 key={category}
+//                                 className={`tab ${activeTab === category ? 'active' : ''}`}
+//                                 onClick={() => setActiveTab(category)}
+//                             >
+//                                 <b>{category}</b>
+//                             </button>
+//                         ))}
+//                     </div>
 
-//   }
-
-//   return (
-//     <div className="mealmap-container">
-
-//       <Header/>
-
-//       <div className='content'>
-//         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
-
-//       <main className={`main-content ${isSidebarOpen ? 'with-sidebar' : ''}`}>
-//         <div className='all-recipes-title'><b>All Recipes</b></div>
-
-//         <div className="tabs">
-//           {Object.keys(recipes).map((category) => (
-//             <button
-//               key={category}
-//               className={`tab ${activeTab === category ? 'active' : ''}`}
-//               onClick={() => setActiveTab(category)}
-//             >
-//               <b>{category}</b>
-//             </button>
-//           ))}
-//         </div>
-
-//         <div className='instruction-text'>
-//           <span className='view-recipe-title'><b>Click Recipe to View</b></span>
-//           <div className='add-recipe-to-list'><Link className="" to="/select-list-page"><button className="text-black bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-5 py-3 text-center">Add to Grocery List</button></Link></div>
-//         </div>
-
-//         <section className="recipe-cards">
-//           {recipes[activeTab].map((recipe) => (
-//               <div key={recipe.id} className="card">
-//                 <div className='recipe-image'></div>
-//                 <div className='bottom-label'>
-//                 <input
-//                   type="checkbox"
-//                   id={`recipe-${recipe.id}`}
-//                   name={`recipe-${recipe.id}`}
-//                   checked={recipe.selected}
-//                   onChange={() => toggleRecipeSelection(activeTab, recipe.id)}
-//                 />
-//                 <label htmlFor={`recipe-${recipe.id}`}>
-                  
-//                   <Link to={`/user-recipe-page/${recipe.id}`} style={{ textDecoration: 'none' }}>
-//                     <span className="recipe-name">{recipe.name}</span>
-//                   </Link>
-
-//                   <button className='delete-recipe' onClick = {deleteRecipe(recipe.id)}></button>
-//                   <span class="delete-tooltiptext">Delete Recipe</span>
-
-//                 </label>
-//                 </div>
+//                     <section className="recipe-cards">
+//                         {recipes.map((recipe) => (
+//                             <div key={recipe.id} className="card">
+//                                 <div className='recipe-image'>
+//                                     {/* Placeholder for recipe image */}
+//                                 </div>
+//                                 <div className='bottom-label'>
+//                                     <input
+//                                         type="checkbox"
+//                                         id={`recipe-${recipe.id}`}
+//                                         name={`recipe-${recipe.id}`}
+//                                         checked={recipe.selected || false}
+//                                         onChange={() => toggleRecipeSelection(recipe.id)}
+//                                     />
+//                                     <label htmlFor={`recipe-${recipe.id}`}>
+//                                         <Link to={`/user-recipe-page/${recipe.id}`} style={{ textDecoration: 'none' }}>
+//                                             <span className="recipe-name">{recipe.name}</span>
+//                                         </Link>
+//                                         <button className='delete-recipe' onClick={() => deleteRecipe(recipe.id)}>X</button>
+//                                         <span className="delete-tooltiptext">Delete Recipe</span>
+//                                     </label>
+//                                 </div>
+//                             </div>
+//                         ))}
+//                     </section>
+//                 </main>
 //             </div>
-//           ))}
-//         </section>
-
-        
-
-        
-
-//       </main>
-//       </div>
-//     </div>
-//   );
+//         </div>
+//     );
 // };
 
 // export default MainPage;
 
 
+
+
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './MainPage.css';
-import Sidebar from './Sidebar';
-import Header from './Header';
+import Sidebar from './Sidebar'; // Verify correct path
+import Header from './Header'; // Verify correct path
 
 const MainPage = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('Breakfast');
-    const [recipes, setRecipes] = useState({
-        Breakfast: [],
-        Lunch: [],
-        Dinner: [],
-        Snack: []
-    });
+    const [recipes, setRecipes] = useState({ Breakfast: [], Lunch: [], Dinner: [], Snack: [] });
+    const [openRecipeId, setOpenRecipeId] = useState(null);
 
     useEffect(() => {
-        const fetchRecipes = async () => {
+        const fetchRecipesByType = async () => {
             try {
-                // Example API call, replace with your actual API endpoint
-                const response = await fetch('/api/recipes');
+                const response = await fetch(`https://mealmap1.azurewebsites.net/api/recipe/type/${activeTab.toLowerCase()}`);
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data = await response.json();
-
-                // Assuming the API returns recipes categorized by meal type
-                setRecipes(data);
+                setRecipes(prev => ({ ...prev, [activeTab]: data })); // Safely updating only the relevant meal type
             } catch (error) {
                 console.error("Failed to fetch recipes:", error);
             }
         };
 
-        fetchRecipes();
-    }, []);
+        fetchRecipesByType();
+    }, [activeTab]);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    const toggleRecipeSelection = (category, id) => {
-        const updatedRecipes = { ...recipes };
-        const recipeIndex = updatedRecipes[category].findIndex(recipe => recipe.id === id);
-        if (recipeIndex !== -1) {
-            updatedRecipes[category][recipeIndex].selected = !updatedRecipes[category][recipeIndex].selected;
-        }
-        setRecipes(updatedRecipes);
-    };
-
-    const deleteRecipe = (id) => {
-        // Implement the delete logic here, possibly making an API call to delete a recipe
+    const handleRecipeClick = (recipeId) => {
+        setOpenRecipeId(openRecipeId === recipeId ? null : recipeId);
     };
 
     return (
@@ -185,10 +151,8 @@ const MainPage = () => {
             <Header />
             <div className='content'>
                 <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
                 <main className={`main-content ${isSidebarOpen ? 'with-sidebar' : ''}`}>
                     <div className='all-recipes-title'><b>All Recipes</b></div>
-
                     <div className="tabs">
                         {Object.keys(recipes).map((category) => (
                             <button
@@ -200,27 +164,26 @@ const MainPage = () => {
                             </button>
                         ))}
                     </div>
-
                     <section className="recipe-cards">
                         {recipes[activeTab]?.map((recipe) => (
-                            <div key={recipe.id} className="card">
-                                <div className='recipe-image'></div>
-                                <div className='bottom-label'>
-                                    <input
-                                        type="checkbox"
-                                        id={`recipe-${recipe.id}`}
-                                        name={`recipe-${recipe.id}`}
-                                        checked={recipe.selected || false}
-                                        onChange={() => toggleRecipeSelection(activeTab, recipe.id)}
-                                    />
-                                    <label htmlFor={`recipe-${recipe.id}`}>
-                                        <Link to={`/user-recipe-page/${recipe.id}`} style={{ textDecoration: 'none' }}>
-                                            <span className="recipe-name">{recipe.name}</span>
-                                        </Link>
-                                        <button className='delete-recipe' onClick={() => deleteRecipe(recipe.id)}>X</button>
-                                        <span className="delete-tooltiptext">Delete Recipe</span>
-                                    </label>
+                            <div
+                                key={recipe.id}
+                                className={`card ${openRecipeId === recipe.id ? 'active' : ''}`}
+                                onClick={() => handleRecipeClick(recipe.id)}
+                            >
+                                <div className='recipe-image'>
+                                    {/* Placeholder for recipe image */}
                                 </div>
+                                <div className='recipe-name'>{recipe.name}</div>
+                                {openRecipeId === recipe.id && (
+                                    <ul className="recipe-ingredients">
+                                        {recipe.ingredients.map((ingredient, index) => (
+                                            <li key={index}>
+                                                {`${ingredient.name}: ${ingredient.quantity} ${ingredient.unit}`}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </div>
                         ))}
                     </section>
@@ -231,6 +194,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
-
-

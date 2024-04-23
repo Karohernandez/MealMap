@@ -8,24 +8,27 @@ import './AllGroceryLists.css'
 
 
 const AllGroceryLists = () => {
-  const [groceryList, setGroceryList] = useState([]);
+  const [groceryList, setGroceryList] = useState({ Planned: [], Completed: [] });
   const [activeTab, setActiveTab] = useState('Planned'); 
-
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const groceryLists = {
-    Planned: [
-      {id: 1, name: 'Grocery List 1', date: '5/1/24'},
-      {id: 2, name: 'Grocery List 2', date: '5/5/24'},
-      {id: 3, name: 'Grocery List 3', date: '4/13/24'},
-    ],
+  useEffect(() => {
+    const fetchLists = async () => {
+      try {
+        const response = await fetch('https://mealmap1.azurewebsites.net/api/recipe');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setGroceryList(data); // Expecting data to be an object with Planned and Completed lists
+      } catch (error) {
+        console.error('Error fetching lists:', error);
+        // Handle the error accordingly
+      }
+    };
 
-    Completed: [
-      {id: 4, name: 'Grocery List 4', date: '3/1/24'},
-      {id: 5, name: 'Grocery List 5', date: '3/15/24'}
-    ]
-  }
+    fetchLists();
+  }, []);
 
   
 
@@ -34,17 +37,6 @@ const AllGroceryLists = () => {
   };
 
   // grab the saved ingredients from the database and display here. Will have example ingredients
-
-  const toggleListSelection = (category, id) => {
-    
-    const updatedLists = { ...groceryLists };
-    const listIndex = updatedLists[category].findIndex(list => list.id === id);
-    if (listIndex !== -1) {
-      updatedLists[category][listIndex].selected = !updatedLists[category][listIndex].selected;
-    }
-    
- 
-  };
 
 
   return (
@@ -60,7 +52,7 @@ const AllGroceryLists = () => {
 
 
         <div className="tabs-grocery-lists">
-          {Object.keys(groceryLists).map((category) => (
+          {Object.keys(groceryList).map((category) => (
             <button
               key={category}
               className={`tab-grocery-lists ${activeTab === category ? 'active' : ''}`}
@@ -73,7 +65,7 @@ const AllGroceryLists = () => {
 
 
         <section className="lists-cards">
-          {groceryLists[activeTab].map((grocerylist) => (
+          {groceryList[activeTab].map((grocerylist) => (
               <div key={grocerylist.id} className="list-card">
                 <div className='grocery-list-image'></div>
                 <div className='bottom-list-label'>
@@ -82,7 +74,6 @@ const AllGroceryLists = () => {
                   id={`grocery-list-${grocerylist.id}`}
                   name={`grocery-list-${grocerylist.id}`}
                   checked={grocerylist.selected}
-                  onChange={() => toggleListSelection(activeTab, grocerylist.id)}
                 />
                 <label htmlFor={`lists-${grocerylist.id}`}>
                   
