@@ -84,6 +84,8 @@ const AllGroceryLists = () => {
 
         <div className='instruction-text'>
           <span className='view-recipe-title'><b>Click Grocery List to View</b></span>
+          <div className='mark-list-complete'><Link><button className="text-white bg-gradient-to-r from-theme-green-light via-theme-green-DEFAULT to-theme-green-dark hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-theme-green-light dark:focus:ring-theme-green-dark font-bold rounded-lg text-base px-5 py-3 text-center">Mark List as Complete</button></Link></div>
+
         </div>
 
 

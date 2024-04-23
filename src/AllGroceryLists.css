@@ -45,6 +45,10 @@
   border-color: #656565;
 }
 
+.instruction-text{
+  margin-right: 70px;
+}
+
 .tab-grocery-lists {
   font-family: 'Lato', sans-serif;
   border: none;
