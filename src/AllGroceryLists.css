@@ -2,38 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-.grocery-list-page-container {
+.all-grocery-lists-page {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
+  height: 100vh; /* This will take the full viewport height */
+  padding: 20px; /* Add padding for smaller screens */
+}
+
+.grocery-list-container {
+  width: 100%; /* Full width to center the card */
+  max-width: 600px; /* Maximum width of the card */
+  padding-top: 50px;;
+  margin: 0 auto; /* Center the card horizontally */
 }
 
 .grocery-list-card {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 80%;
-  max-width: 500px;
-  padding: 20px;
-  margin-top: 20px;
+  padding-top: 20px; /* Adjust the value as needed */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a card effect */
+  
 }
 
-.grocery-list-card h2 {
-  color: #333333;
-  margin-bottom: 10px;
-}
-
-.grocery-list-card h3 {
-  color: #666666;
-  margin-bottom: 10px;
+.grocery-list-card h2, .grocery-list-card h3 {
+  color: #333; /* Darker text for better readability */
 }
 
 .grocery-list-item {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px solid #eaeaea;
+  padding: 10px 0;
+  border-bottom: 1px solid #eaeaea; /* Subtle separator */
 }
 
 .ingredient-name {
@@ -42,12 +42,16 @@
 
 .quantity-unit {
   font-weight: normal;
-  color: #666666;
+  color: #666;
 }
 
-/* You can add media queries to make the layout responsive */
+/* Responsive adjustments can be made with media queries if necessary */
 @media (max-width: 768px) {
-  .grocery-list-card {
-    width: 90%;
+  .all-grocery-lists-page {
+    height: auto; /* Adjust height for smaller devices */
+  }
+
+  .grocery-list-container {
+    padding: 20px; /* Add more padding on smaller screens */
   }
 }
