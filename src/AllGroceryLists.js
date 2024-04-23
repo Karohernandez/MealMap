@@ -1,99 +1,49 @@
-import React, {useEffect} from 'react';
-import { Link } from 'react-router-dom';
-import {useState} from 'react';
-
+import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import './AllGroceryLists.css'
-
+import './AllGroceryLists.css';
 
 const AllGroceryLists = () => {
-  const [groceryList, setGroceryList] = useState({ Planned: [], Completed: [] });
-  const [activeTab, setActiveTab] = useState('Planned'); 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [groceryItems, setGroceryItems] = useState([]);
 
   useEffect(() => {
-    const fetchLists = async () => {
+    const fetchGroceryList = async () => {
       try {
-        const response = await fetch('https://mealmap1.azurewebsites.net/api/recipe');
+        const response = await fetch('https://mealmap1.azurewebsites.net/api/recipe/grocerylist');
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
         const data = await response.json();
-        setGroceryList(data); // Expecting data to be an object with Planned and Completed lists
+        setGroceryItems(data);
       } catch (error) {
-        console.error('Error fetching lists:', error);
-        // Handle the error accordingly
+        console.error("Failed to fetch grocery list:", error);
       }
     };
 
-    fetchLists();
+    fetchGroceryList();
   }, []);
 
-  
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  // grab the saved ingredients from the database and display here. Will have example ingredients
-
-
   return (
-    <div className='grocery-mealmap-container'>
+    <div className="grocery-list-container">
       <Header />
-
-      <div className='grocery-lists-content'>
-        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
-        <main className={`grocery-lists-main-content ${isSidebarOpen ? 'with-sidebar' : ''}`}>
-
-        <div className='all-lists-title'><b>All Grocery Lists</b></div>
-
-
-        <div className="tabs-grocery-lists">
-          {Object.keys(groceryList).map((category) => (
-            <button
-              key={category}
-              className={`tab-grocery-lists ${activeTab === category ? 'active' : ''}`}
-              onClick={() => setActiveTab(category)}
-            >
-              <b>{category}</b>
-            </button>
+      <Sidebar isOpen={false} toggleSidebar={() => {}} />
+      <h1>Grocery List Info</h1>
+      <div className="grocery-list-card">
+        <h2>Grocery List</h2>
+        <h3>Items:</h3>
+        <ul>
+          {groceryItems.map((item, index) => (
+            <li key={index} className="grocery-list-item">
+              <span className="ingredient-name">{item.name}</span>
+              <span className="quantity-unit">
+                {item.quantity ? `${item.quantity} ${item.unit}` : `Some ${item.unit}`}
+              </span>
+            </li>
           ))}
-        </div>
-
-
-        <section className="lists-cards">
-          {groceryList[activeTab].map((grocerylist) => (
-              <div key={grocerylist.id} className="list-card">
-                <div className='grocery-list-image'></div>
-                <div className='bottom-list-label'>
-                <input
-                  type="checkbox"
-                  id={`grocery-list-${grocerylist.id}`}
-                  name={`grocery-list-${grocerylist.id}`}
-                  checked={grocerylist.selected}
-                />
-                <label htmlFor={`lists-${grocerylist.id}`}>
-                  
-                  <Link to={`/grocery-list-page/${grocerylist.id}`} style={{ textDecoration: 'none' }}>
-                    <span className="grocery-list-name">{grocerylist.name}</span>
-                  </Link>
-                </label>
-                </div>
-            </div>
-          ))}
-        </section>
-
-        <div>
-          <button className='delete-grocery-list'></button>
-        </div>
-
-        </main>
+        </ul>
       </div>
-  </div>
-  )
-}
+    </div>
+  );
+};
 
 export default AllGroceryLists;

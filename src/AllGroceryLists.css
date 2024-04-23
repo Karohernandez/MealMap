@@ -1,108 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-.grocery-mealmap-container {
-  display: flex;
-  height: 100vh;
-  margin: 0;
-  flex-direction: column; 
-  background-color: #c9c8c6;
-}
-
-.grocery-lists-content {
-  display: flex;
-  flex-direction: row;
-}
-
-.grocery-lists-main-content {
-  margin-top: 37px;
-  flex-grow: 1;
-  padding: 20px;
-  transition: margin-left 0.3s ease;
-}
-
-.all-lists-title {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 40px;
-}
-
-.tabs-grocery-lists {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 20px;
-  margin-left: 415px;
-  
-  margin-top: 40px;
-  margin-bottom: 53px;
-  border-radius: 50px;
-  height: 75px;
-  width:700px;
-  padding-top: 5px;
-  border-width: 1.5px;
-  border-color: #656565;
-}
-
-.tab-grocery-lists {
-  font-family: 'Lato', sans-serif;
-  border: none;
-  cursor: pointer;
-  background-color: #c9c8c6;
-  font-size: 19px;
-  font-weight: 55px;
-  color: rgb(0, 0, 0);
-  width: 120px;
-  height: 62px;
-}
-
-
-.tab-grocery-lists.active {
-  border-radius: 20px;
-  box-shadow: 0 3px 7px 0 rgba(43, 43, 43, 0.1), 0 5px 10px 0 rgba(43, 43, 43, 0.1);
-  color: #496a62;
-}
-
-.lists-cards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 60px;
-  margin-left: 80px;
-  margin-right: 80px;
-  margin-top: 70px;
-}
-
-.list-card {
+.grocery-list-page-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.grocery-list-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 500px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.grocery-list-card h2 {
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.grocery-list-card h3 {
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+.grocery-list-item {
+  display: flex;
   justify-content: space-between;
-  padding-top: 40px;
-  position: relative;
-  border-radius: 5px;
-  height: 200px;
-  width: 300px;
-  background-color: #5b7d6cb2;
-  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.1), 0 5px 19px 0 rgba(0, 0, 0, 0.1);
+  padding: 5px 0;
+  border-bottom: 1px solid #eaeaea;
 }
 
-.grocery-list-image {
-  flex-grow: 1;
-
+.ingredient-name {
+  font-weight: bold;
 }
 
-.bottom-list-label {
-  border-top: 2px solid #344a45;
-  background-color: #344a4568;
-  padding-top: 15px;
-  height: 60px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+.quantity-unit {
+  font-weight: normal;
+  color: #666666;
 }
 
-.grocery-list-name {
-  font-family: 'Lato', sans-serif;
-  margin-left: 40px;
-  font-size: 19px; 
-  color: #101111;
-
+/* You can add media queries to make the layout responsive */
+@media (max-width: 768px) {
+  .grocery-list-card {
+    width: 90%;
+  }
 }
